@@ -1,0 +1,727 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>2020 寒假专题训练：计算几何 Part 2 | _RSY_&#39;s blog</title>
+<link rel="shortcut icon" href="https://rensheyu.github.io/favicon.ico?v=1582713329813">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://rensheyu.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="2020 寒假专题训练：计算几何 Part 2 | _RSY_&#39;s blog - Atom Feed" href="https://rensheyu.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Day3
+一、例题
+【例题】DTOJ 2167 信号塔
+【题解】
+考虑将每个点依次加入.
+不难证明，新加入的一个点，若不在原来的点的最小圆覆盖内，则一定在加入后的最小圆覆盖上. 此时确定了一个点.
+接下来贪心地选取. 假设加入的点为第 ii..." />
+    <meta name="keywords" content="专题" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://rensheyu.github.io">
+  <img class="avatar" src="https://rensheyu.github.io/images/avatar.png?v=1582713329813" alt="">
+  </a>
+  <h1 class="site-title">
+    _RSY_&#39;s blog
+  </h1>
+  <p class="site-description">
+    滚落沙尘，泛生浮光。掠影千年，奔走四方。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              2020 寒假专题训练：计算几何 Part 2
+            </h2>
+            <div class="post-info">
+              <span>
+                20200226
+              </span>
+              <span>
+                25 min read
+              </span>
+              
+                <a href="https://rensheyu.github.io/subject/" class="post-tag">
+                  # 专题
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="day3">Day3</h1>
+<h2 id="一-例题">一、例题</h2>
+<p>【例题】DTOJ 2167 信号塔</p>
+<p>【题解】</p>
+<p>考虑将每个点依次加入.</p>
+<p>不难证明，新加入的一个点，若不在原来的点的最小圆覆盖内，则一定在加入后的最小圆覆盖上. 此时确定了一个点.</p>
+<p>接下来贪心地选取. 假设加入的点为第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 个点，那么先确定一个以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">1,i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">i</span></span></span></span> 为直径的圆.</p>
+<p>枚举前 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 个点，若点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 不在圆内，则 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 必定在前 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 个点和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 的最小圆覆盖上. 此时确定了两个点.</p>
+<p>同理，枚举前 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 个点，若不在圆内，则令其在圆上。此时确定了三个点.</p>
+<p>根据三点确定一个圆，此时我们已经得到前 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 个点的最小圆覆盖. 递推即可.</p>
+<p>但注意到一个问题，此时需要三重循环，效率是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>3</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 的，考虑优化.</p>
+<p>由于三点确定一个圆，则一个点在圆上的概率为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>3</mn><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{3}{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，于是考虑将给出的点随机排序，这样效率的期望就是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 的了.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+#define clr(a) memset(a,0,sizeof(a))
+#define print(x) std::cerr&lt;&lt;#x&lt;&lt;'='&lt;&lt;x&lt;&lt;'\n'
+const double eps=1e-6;
+int n;
+struct point { double x,y; }p[500000+10];
+struct circle { point p;double r; }ans;
+inline double dist ( point p1,point p2 ) { return sqrt((p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y)); }
+inline circle Circle ( point p1,point p2,point p3 )
+{
+	circle tmp;
+	double a=dist(p1,p2),b=dist(p1,p3),c=dist(p2,p3);
+	double a1=p2.x-p1.x,b1=p2.y-p1.y,c1=(a1*a1+b1*b1)/2;
+	double a2=p3.x-p1.x,b2=p3.y-p1.y,c2=(a2*a2+b2*b2)/2;
+	double d=a1*b2-a2*b1;
+	tmp.p=(point){p1.x+(c1*b2-c2*b1)/d,p1.y+(a1*c2-a2*c1)/d};
+	tmp.r=dist(tmp.p,p1);
+	return tmp;
+
+}
+int main()
+{
+	scanf(&quot;%d&quot;,&amp;n);
+	for ( int i=1;i&lt;=n;i++ ) scanf(&quot;%lf%lf&quot;,&amp;p[i].x,&amp;p[i].y);
+	std::random_shuffle(p+1,p+n+1);ans.p=p[1];ans.r=0;
+	for ( int i=2;i&lt;=n;i++ ) if ( dist(p[i],ans.p)&gt;ans.r+eps )
+	{
+		ans.p=p[i];ans.r=0;
+		for ( int j=1;j&lt;i;j++ ) if ( dist(p[j],ans.p)&gt;ans.r+eps )
+		{
+			ans.p=(point){(p[i].x+p[j].x)/2,(p[i].y+p[j].y)/2};
+			ans.r=dist(p[i],p[j])/2;
+			for ( int k=1;k&lt;j;k++ ) if ( dist(p[k],ans.p)&gt;ans.r+eps ) ans=Circle(p[i],p[j],p[k]);
+		}
+	}
+	return !printf(&quot;%.2lf %.2lf %.2lf\n&quot;,ans.p.x,ans.p.y,ans.r);
+}
+</code></pre>
+<p>【例题】DTOJ 1698 单位圆覆盖</p>
+<p>【题解】</p>
+<p>方法一：</p>
+<p>显然一定存在一个最优解使得至少两个点在圆上.</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 枚举两个点，找到圆心，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 判断每个点是否在圆内即可.</p>
+<p>效率 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>3</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+const int eps=1e-10;
+struct Vector
+{
+	double x,y;
+	Vector(double _x=0,double _y=0){x=_x;y=_y;}
+	inline friend Vector operator + ( Vector u,Vector v ) { return Vector(u.x+v.x,u.y+v.y); }
+	inline friend Vector operator - ( Vector u,Vector v ) { return Vector(u.x-v.x,u.y-v.y); }
+	inline friend Vector operator * ( Vector u,double v ) { return Vector(u.x*v,u.y*v); }
+	inline friend Vector operator / ( Vector u,double v ) { return Vector(u.x/v,u.y/v); }
+	inline double Len ( void ) { return sqrt(x*x+y*y); }
+	inline Vector unit ( void ) { return *this/Len(); }
+}p[1000],C;
+int n;
+inline int calc ( void )
+{
+	int res=0;
+	for ( int i=1;i&lt;=n;i++ ) if ( (C-p[i]).Len()&lt;=1 ) res++;
+	return res;
+}
+signed main()
+{
+	while ( ~scanf(&quot;%d&quot;,&amp;n) and n )
+	{
+		int ans=1;
+		for ( int i=1;i&lt;=n;i++ )
+		{
+			double x,y;
+			scanf(&quot;%lf%lf&quot;,&amp;x,&amp;y);
+			p[i]=Vector(x,y);
+		}
+		for ( int i=1;i&lt;n;i++ ) for ( int j=i+1;j&lt;=n;j++ ) if ( (p[i]-p[j]).Len()&lt;=2 )
+		{
+			Vector mid=(p[i]+p[j])/2;
+			Vector d=p[j]-p[i];
+			Vector a=Vector(d.y,-d.x).unit();
+			double dis=sqrt(1-(p[i]-mid).Len()*(p[i]-mid).Len());
+			a=a*dis;
+			C=mid+a;ans=std::max(ans,calc());
+			C=mid-a;ans=std::max(ans,calc());
+		}
+		printf(&quot;%d\n&quot;,ans);
+	}
+	return 0;
+}
+</code></pre>
+<p>方法二：</p>
+<p>考虑先确定其中一个点.</p>
+<p>显然圆心应选在以确定点为圆心，单位长为半径的圆上. 因此考虑每段弧的贡献.</p>
+<p>把另一点转化为相交的两个端点的弧，则以弧上任一点为圆心的圆必定包含另一点.</p>
+<p>因此每个点转化为一段区间，求最大区间覆盖数，排序后扫一遍即可. 效率 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2 \log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+const double pi=acos(-1);
+int n;
+struct Vector
+{
+	double x,y;
+	Vector(double _x=0,double _y=0){x=_x;y=_y;}
+	inline friend Vector operator + ( Vector u,Vector v ) { return Vector(u.x+v.x,u.y+v.y); }
+	inline friend Vector operator - ( Vector u,Vector v ) { return Vector(u.x-v.x,u.y-v.y); }
+	inline double Len ( void ) { return sqrt(x*x+y*y); }
+	inline double calc ( void ) { return atan2(y,x); }
+} p[1000];
+struct Angle
+{
+	double A;bool f;
+	Angle(double _A=0,bool _f=false){A=_A;f=_f;}
+	inline bool friend operator &lt; (  const Angle &amp;A1,const Angle &amp;A2 ) { return A1.A&lt;A2.A; }
+} q[1000];
+signed main()
+{
+	while ( ~scanf(&quot;%d&quot;,&amp;n) and n )
+	{
+		int ans=1;
+		for ( int i=1;i&lt;=n;i++ )
+		{
+			double x,y;
+			scanf(&quot;%lf%lf&quot;,&amp;x,&amp;y);
+			p[i]=Vector(x,y);
+		}
+		for ( int i=1;i&lt;=n;i++ )
+		{
+			int tot=0;
+			for ( int j=1;j&lt;=n;j++ ) if ( i!=j and (p[i]-p[j]).Len()&lt;=2 )
+			{
+				double res=acos((p[i]-p[j]).Len()/2);
+				double ang=(p[j]-p[i]).calc();
+				q[++tot]=Angle(ang-res,true);
+				q[++tot]=Angle(ang+res,false);
+			}
+			if ( tot&lt;=ans ) continue;
+			std::sort(q+1,q+tot+1);
+			int cnt=1;
+			for ( int j=1;j&lt;=tot;j++ )
+			{
+				if ( q[j].f ) cnt++;
+				else cnt--;
+				ans=std::max(ans,cnt);
+			}
+		}
+		printf(&quot;%d\n&quot;,ans);
+	}
+}
+</code></pre>
+<p>【例题】DTOJ 4382 鱼</p>
+<p>【题解】</p>
+<p>显然要从6个点中选择一个点枚举.</p>
+<p>由于其中 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span> 个点跟 D 有关，我们考虑枚举 D.</p>
+<p>A,B,C 为一部分，E,F 为另一部分，根据要求，在两个半平面内，考虑分别统计.</p>
+<p>先考虑半平面如何划分. 注意到题目给出的角度限制都与 A 有关，于是可以考虑枚举 A.</p>
+<p>角度问题显然可以转化为极角序，则 DA 与 DE,DF 的夹角 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span></span></span></span> 应在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mfrac><mi>π</mi><mn>2</mn></mfrac><mo separator="true">,</mo><mfrac><mrow><mn>3</mn><mi>π</mi></mrow><mn>2</mn></mfrac><mo>]</mo></mrow><annotation encoding="application/x-tex">[\frac{\pi}{2},\frac{3\pi}{2}]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mopen">[</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.695392em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">π</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">π</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">]</span></span></span></span>内.</p>
+<p>显然该范围内任意两个到 D 距离相等的点都可以选择，即相当于有多个团，每个大小为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 团的贡献为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mi>x</mi><mo>(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{x(x-1)}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.355em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">x</span><span class="mbin mtight">−</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>.</p>
+<p>用双指针维护 E,F 所在的一段区间，枚举 A 的时候推一下就处理好了.</p>
+<p>接下来考虑 B,C. 根据垂直平分线的判定，AD 垂直平分 BC.</p>
+<p>这部分需要判定两个内容，一个是垂直，另一个是 AD 与 BC 中点有交点。注意是线段相交.</p>
+<p>垂直、中点预处理一下然后直接找就可以了. 垂直的判定可以用点积.</p>
+<p>对于每个 A，答案为 B,C 的方案数与 E,F 的方案数相乘.</p>
+<p>综上，效率 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>.</p>
+<p>注意一下，本题略卡精度，能用整数尽量使用整数运算. 可以做到只有极角排序时用到 double 类型.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+const double eps=1e-10;
+const double pi=acos(-1);
+long long ans;
+struct Point
+{
+	long long x,y;
+	Point(){}
+	Point(long long _x,long long _y){x=_x;y=_y;}
+	inline friend Point operator + ( const Point &amp;u,const Point &amp;v ) { return Point(u.x+v.x,u.y+v.y); }
+	inline friend Point operator - ( const Point &amp;u,const Point &amp;v ) { return Point(u.x-v.x,u.y-v.y); }
+}A[4010];
+inline Point rotate ( const Point &amp;u,const Point &amp;v )
+{
+	Point p=v-u;
+	std::swap(p.x,p.y);p.x=-p.x;
+	return u+p;
+}
+struct Vector
+{
+	Point p;double k;
+	Vector(){}
+	Vector(Point _p,double _k){p=_p;k=_k;}
+	inline friend bool operator &lt; ( const Vector &amp;u,const Vector &amp;v ) { return u.k&lt;v.k; }
+}B[4010];
+inline long long get_abs ( long long x ) { return x&lt;0 ? -x : x ; }
+struct Line
+{
+	long long a,b,c,x;
+	Line(){}
+	Line(long long _a,long long _b,long long _c,long long _x){a=_a;b=_b;c=_c;x=_x;}
+	inline friend bool operator &lt; ( const Line &amp;u,const Line &amp;v )
+	{
+		if ( u.a!=v.a ) return u.a&lt;v.a;
+		if ( u.b!=v.b ) return u.b&lt;v.b;
+		if ( u.c!=v.c ) return u.c&lt;v.c;
+		return u.x&lt;v.x;
+	}
+};
+inline Line calc ( Point u,Point v )
+{
+	long long dx=v.x-u.x,dy=v.y-u.y;
+	long long g=std::__gcd(get_abs(dx),get_abs(dy));
+	dx/=g;dy/=g;std::swap(dx,dy);dx=-dx;
+	if ( dx==0 ) dy=get_abs(dy);
+	if ( dx&lt;0 ) dx=-dx,dy=-dy;
+	return Line(dx,dy,u.x*dx+u.y*dy,0);
+}
+std::vector&lt;Line&gt; X,Y;
+long long dis[4010];
+int n,num[4010];
+std::set&lt;long long&gt; s;
+std::map&lt;long long,int&gt; map;
+signed main()
+{
+	scanf(&quot;%d&quot;,&amp;n);
+	for ( int i=1;i&lt;=n;i++ ) scanf(&quot;%lld%lld&quot;,&amp;A[i].x,&amp;A[i].y),A[i].x&lt;&lt;=1,A[i].y&lt;&lt;=1;
+	for ( int i=1;i&lt;=n;i++ ) for ( int j=1;j&lt;=n;j++ ) if ( i!=j )
+	{
+		Point mid=Point((A[i].x+A[j].x)&gt;&gt;1,(A[i].y+A[j].y)&gt;&gt;1);
+		Line tmp=calc(rotate(mid,A[i]),rotate(mid,A[j]));
+		X.push_back(Line(tmp.a,tmp.b,tmp.c,mid.x));
+		Y.push_back(Line(tmp.a,tmp.b,tmp.c,mid.y));
+	}
+	std::sort(X.begin(),X.end());
+	std::sort(Y.begin(),Y.end());
+	for ( int i=1;i&lt;=n;i++ )
+	{
+		int tot=0,cnt=0;s.clear();map.clear();
+		for ( int j=1;j&lt;=n;j++ ) if ( i!=j ) B[++tot]=Vector(A[j],atan2(A[j].y-A[i].y,A[j].x-A[i].x));
+		std::sort(B+1,B+n);
+		for ( int j=1;j&lt;n;j++ ) B[j+n-1]=Vector(B[j].p,B[j].k+2*pi);
+		for ( int j=1;j&lt;n;j++ ) s.insert(dis[j]=(A[i].x-B[j].p.x)*(A[i].x-B[j].p.x)+(A[i].y-B[j].p.y)*(A[i].y-B[j].p.y));
+		for ( long long x:s ) map[x]=++cnt;
+		for ( int j=1;j&lt;n;j++ ) dis[j+n-1]=dis[j]=map[dis[j]];
+		for ( int j=1;j&lt;=cnt;j++ ) num[j]=0;
+		long long ans1=0,ans2=0;
+		for ( int j=1,l=0,r=0;j&lt;n;j++ )
+		{
+			while ( r&lt;2*n-1 and B[j].k+1.5*pi-B[r+1].k&gt;eps ) r++,ans1+=num[dis[r]]++;
+			while ( l&lt;2*n-1 and B[j].k+0.5*pi-B[l+1].k&gt;-eps ) l++,ans1-=--num[dis[l]];
+			Line t=calc(A[i],B[j].p),tl=t,tr=t;
+			if ( A[i].x!=B[j].p.x )
+				tl.x=std::min(A[i].x,B[j].p.x),tr.x=std::max(A[i].x,B[j].p.x),
+				ans2=std::lower_bound(X.begin(),X.end(),tr)-std::upper_bound(X.begin(),X.end(),tl);
+			else
+				tl.x=std::min(A[i].y,B[j].p.y),tr.x=std::max(A[i].y,B[j].p.y),
+				ans2=std::lower_bound(Y.begin(),Y.end(),tr)-std::upper_bound(Y.begin(),Y.end(),tl);
+			ans+=ans1*std::max(ans2,0LL);
+		}
+	}
+	return !printf(&quot;%lld\n&quot;,ans&lt;&lt;1);
+}
+</code></pre>
+<h1 id="day4">Day4</h1>
+<h2 id="一-例题-2">一、例题</h2>
+<p>【例题】DTOJ 2688 「SDOI2016」平凡的骰子</p>
+<p>【题解】</p>
+<h3 id="step-1求重心">Step 1：求重心</h3>
+<p>根据重心的定义式有：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><msub><mi>x</mi><mi>c</mi></msub><mo stretchy="true">→</mo></mover><mo>=</mo><mfrac><mrow><mo>∑</mo><msub><mi>m</mi><mi>p</mi></msub><mover accent="true"><msub><mi>x</mi><mi>p</mi></msub><mo stretchy="true">→</mo></mover></mrow><mrow><mo>∑</mo><msub><mi>m</mi><mi>p</mi></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">\overrightarrow{x_c}=\frac{\sum m_p\overrightarrow{x_p}}{\sum m_p}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.10256em;vertical-align:-0.15em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.95256em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span class="svg-align" style="top:-3.43056em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg width='400em' height='0.522em' viewBox='0 0 400000 522' preserveAspectRatio='xMaxYMin slice'><path d='M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.716432em;vertical-align:-0.5423199999999999em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.174112em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="mspace mtight" style="margin-right:0.19516666666666668em;"></span><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285716em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2818857142857143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.50732em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="mspace mtight" style="margin-right:0.19516666666666668em;"></span><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285716em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2818857142857143em;"><span></span></span></span></span></span></span><span class="mord accent mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9525600000000001em;"><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285716em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2818857142857143em;"><span></span></span></span></span></span></span></span></span><span class="svg-align" style="top:-3.13056em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail mtight" style="height:0.522em;min-width:0.888em;"><svg width='400em' height='0.522em' viewBox='0 0 400000 522' preserveAspectRatio='xMaxYMin slice'><path d='M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2818857142857143em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5423199999999999em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>.</p>
+<p>对于三角形的重心很好计算，同理不难得到四面体的重心公式.</p>
+<p>对于多边形的重心，通常采用三角形分割的方式；同理，对于多面体的重心，通常采用四面体分割的方式.</p>
+<p>我们一般在多面体内随便找一个点（常用所有点坐标的平均数），然后在每个面进行三角形分割，将三角形与找的点连成四面体.</p>
+<p>下面给出四面体的体积公式：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>V</mi><mo>=</mo><mfrac><mn>1</mn><mn>6</mn></mfrac><mo>∣</mo><mover accent="true"><mi>a</mi><mo stretchy="true">→</mo></mover><mo>×</mo><mover accent="true"><mi>b</mi><mo stretchy="true">→</mo></mover><mo>⋅</mo><mover accent="true"><mi>c</mi><mo stretchy="true">→</mo></mover><mo>∣</mo></mrow><annotation encoding="application/x-tex">V=\frac{1}{6}\lvert \overrightarrow{a} \times \overrightarrow{b} \cdot \overrightarrow{c} \rvert</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.29756em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">6</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">∣</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9525600000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">a</span></span></span><span class="svg-align" style="top:-3.43056em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg width='400em' height='0.522em' viewBox='0 0 400000 522' preserveAspectRatio='xMaxYMin slice'><path d='M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z'/></svg></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.21644em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.21644em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">b</span></span></span><span class="svg-align" style="top:-3.69444em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg width='400em' height='0.522em' viewBox='0 0 400000 522' preserveAspectRatio='xMaxYMin slice'><path d='M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z'/></svg></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.20256em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9525600000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">c</span></span></span><span class="svg-align" style="top:-3.43056em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg width='400em' height='0.522em' viewBox='0 0 400000 522' preserveAspectRatio='xMaxYMin slice'><path d='M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z'/></svg></span></span></span></span></span></span><span class="mclose">∣</span></span></span></span>.</p>
+<p>其中 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>a</mi><mo stretchy="true">→</mo></mover><mo separator="true">,</mo><mover accent="true"><mi>b</mi><mo stretchy="true">→</mo></mover><mo separator="true">,</mo><mover accent="true"><mi>c</mi><mo stretchy="true">→</mo></mover></mrow><annotation encoding="application/x-tex">\overrightarrow{a},\overrightarrow{b},\overrightarrow{c}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.41088em;vertical-align:-0.19444em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9525600000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">a</span></span></span><span class="svg-align" style="top:-3.43056em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg width='400em' height='0.522em' viewBox='0 0 400000 522' preserveAspectRatio='xMaxYMin slice'><path d='M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z'/></svg></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.21644em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">b</span></span></span><span class="svg-align" style="top:-3.69444em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg width='400em' height='0.522em' viewBox='0 0 400000 522' preserveAspectRatio='xMaxYMin slice'><path d='M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z'/></svg></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9525600000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">c</span></span></span><span class="svg-align" style="top:-3.43056em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg width='400em' height='0.522em' viewBox='0 0 400000 522' preserveAspectRatio='xMaxYMin slice'><path d='M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z'/></svg></span></span></span></span></span></span></span></span></span> 为从四面体同一个顶点出发的三条边的向量.</p>
+<p>至此就可以求出多面体的重心.</p>
+<h3 id="step-2算面积">Step 2：算面积</h3>
+<p>根据题目给出的提示，我们只需进行三角形分割及二面角计算即可.</p>
+<p>不难发现，面积即为内角和减去 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo><mo>×</mo><mi>π</mi></mrow><annotation encoding="application/x-tex">(n-2) \times \pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">π</span></span></span></span>，其中 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 为点数.</p>
+<p>于是对于每个二面角，先求出平面上两个向量的叉积求出平面面的法向量，然后直接点积，求反余弦值即可.</p>
+<p>效率 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>f</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nf)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mclose">)</span></span></span></span>，轻松过掉本题.</p>
+<p>PS：本题数据范围有误，应为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>≤</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">f \leq 100</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span></span></span></span>.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+const double pi=acos(-1);
+int n,f,cnt[200];
+struct Vector
+{
+	double x,y,z;
+	Vector(){x=y=z=0;}
+	Vector(double _x,double _y,double _z){x=_x;y=_y;z=_z;}
+	inline friend Vector operator + ( Vector u,Vector v ) { return Vector(u.x+v.x,u.y+v.y,u.z+v.z); }
+	inline friend Vector operator - ( Vector u,Vector v ) { return Vector(u.x-v.x,u.y-v.y,u.z-v.z); }
+	inline friend Vector operator * ( Vector u,double v ) { return Vector(u.x*v,u.y*v,u.z*v); }
+	inline friend Vector operator / ( Vector u,double v ) { return Vector(u.x/v,u.y/v,u.z/v); }
+	inline friend double operator * ( Vector u,Vector v ) { return u.x*v.x+u.y*v.y+u.z*v.z; }
+	inline friend Vector operator ^ ( Vector u,Vector v ) { return Vector(u.y*v.z-u.z*v.y,u.z*v.x-u.x*v.z,u.x*v.y-u.y*v.x); }
+	inline double Len ( void ) { return sqrt(x*x+y*y+z*z); }
+	inline Vector unit ( void ) { return *this/Len(); }
+}p[200],g[200][200];
+inline double V ( Vector u,Vector v,Vector w ) { return ((u^v)*w)/6; }
+inline int get ( int x,int v ) { return (x-1)%v+1; }
+inline double calc ( Vector G,int t )
+{
+	double ans=0;
+	for ( int i=1;i&lt;=cnt[t];i++ )
+	{
+		Vector u=g[t][i]-G,v=g[t][get(i+1,cnt[t])]-G,w=g[t][get(i+2,cnt[t])]-G;
+		ans+=acos(((u^v).unit())*((w^v).unit()));
+	}
+	return ans-pi*(cnt[t]-2);
+}
+signed main()
+{
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;f);
+	for ( int i=1;i&lt;=n;i++ ) scanf(&quot;%lf%lf%lf&quot;,&amp;p[i].x,&amp;p[i].y,&amp;p[i].z);
+	for ( int i=1;i&lt;=f;i++ )
+	{
+		scanf(&quot;%d&quot;,&amp;cnt[i]);
+		for ( int j=1,x;j&lt;=cnt[i];j++ ) scanf(&quot;%d&quot;,&amp;x),g[i][j]=p[x];
+	}
+	Vector c,d;
+	double sum=0;
+	for ( int i=1;i&lt;=n;i++ ) c=c+p[i];
+	c=c/n;
+	for ( int i=1;i&lt;=f;i++ ) for ( int j=2;j&lt;cnt[i];j++ )
+	{
+		Vector u=g[i][1]-c,v=g[i][j]-c,w=g[i][j+1]-c;
+		double res=V(u,v,w);d=d+((u+v+w)/4*res);sum+=res;
+	}
+	Vector G=c+(d/sum);
+	for ( int i=1;i&lt;=f;i++ ) printf(&quot;%.7lf\n&quot;,calc(G,i)/(4*pi));
+	return 0;
+}
+</code></pre>
+<p>【例题】DTOJ 1232 「ZJOI2012」旅游</p>
+<p>【题解】</p>
+<p>平面图转对偶图入门题. 考虑三角分割的性质，考虑与多边形间的转化.</p>
+<p>显然有个思路就是把多边形当成新的点，原来的边当作连结两个多边形的边. 不难发现，新构的图是一棵树.</p>
+<p>因此直接找树的直径即为答案.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+const int maxn=200000+10;
+std::vector&lt;int&gt; e[maxn];
+int dis[maxn],n,ans,p;
+std::map&lt;std::pair&lt;int,int&gt;,int&gt; map;
+inline void Add ( int u,int v ) { e[u].push_back(v);e[v].push_back(u); }
+inline void dfs ( int u,int fr )
+{
+	if ( (dis[u]=dis[fr]+1)&gt;ans ) ans=dis[u],p=u;
+	for ( int v:e[u] ) if ( v!=fr ) dfs(v,u);
+}
+signed main()
+{
+	scanf(&quot;%d&quot;,&amp;n);n-=2;
+	for ( int i=1;i&lt;=n;i++ )
+	{
+		int p,q,r;scanf(&quot;%d%d%d&quot;,&amp;p,&amp;q,&amp;r);
+		if ( p&gt;q ) std::swap(p,q);
+		if ( q&gt;r ) std::swap(q,r);
+		if ( p&gt;q ) std::swap(p,q);
+		if ( p+1!=q )
+		{
+			if ( map.count(std::make_pair(p,q)) ) Add(map[std::make_pair(p,q)],i);
+			map[std::make_pair(p,q)]=i;
+		}
+		if ( q+1!=r )
+		{
+			if ( map.count(std::make_pair(q,r)) ) Add(map[std::make_pair(q,r)],i);
+			map[std::make_pair(q,r)]=i;
+		}
+		if ( p!=1 or r!=n+2 )
+		{
+			if ( map.count(std::make_pair(p,r)) ) Add(map[std::make_pair(p,r)],i);
+			map[std::make_pair(p,r)]=i;
+		}
+	}
+	dfs(1,0);dfs(p,0);
+	return !printf(&quot;%d\n&quot;,ans);
+}
+</code></pre>
+<p>【例题】DTOJ 4547 「HNOI2016」矿区</p>
+<p>【题解】</p>
+<p>这题是非常标准的平面图转对偶图。</p>
+<p>考虑转的过程。我们把每条边分离成两条：</p>
+<p>原本是这样：</p>
+<figure data-type="image" tabindex="1"><img src="https://cdn.luogu.com.cn/upload/image_hosting/kaa9z2m8.png" alt="" loading="lazy"></figure>
+<p>分离后是这样：</p>
+<figure data-type="image" tabindex="2"><img src="https://cdn.luogu.com.cn/upload/image_hosting/3ag94r4l.png" alt="" loading="lazy"></figure>
+<p>按照以往做法，每个多边形的边按逆时针排序.</p>
+<p>这时我们注意到：</p>
+<p>每条原来的边被拆成两条有向边，分别对应两个多边形.</p>
+<p>把多边形当成新图的点，把边转换成连接两个多边形的新边即可.</p>
+<p>考虑具体实现的过程：</p>
+<p>首先需要找出每个多边形：对每个点的出边按极角序排序，从每个点出发沿最小转角绕一圈即可.</p>
+<p>其次建图.</p>
+<p>最后维护信息：</p>
+<p>我们把无限大的部分当成一个点，任意找出对偶图的一个生成树.</p>
+<p>不难证明，答案一定是在树上的一个连通块上.</p>
+<p>先在树上对每条边定个方向，按给出点的顺序遍历每条边。若正向则答案加上子树答案和，若反向则减去。即可维护.</p>
+<p>关于分数输出，可以上下同时 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>×</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">\times 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">×</span><span class="mord">4</span></span></span></span>，然后进行处理.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+inline int read ( void )
+{
+	int x=0;char ch;bool f=true;
+	while ( !isdigit(ch=getchar()) ) if ( ch=='-' ) f=false;
+	for ( x=ch^48;isdigit(ch=getchar()); ) x=(x&lt;&lt;1)+(x&lt;&lt;3)+(ch^48);
+	return f ? x : -x ;
+}
+const int maxn=200000+10,maxm=1200000+10;
+const double eps=1e-10;
+inline int dcmp ( double x ) { return fabs(x)&lt;eps ? 0 : ( x&lt;0 ? -1 : 1 ) ; }
+int cnt=1,tot,root,nxt[maxm],bl[maxm],f[maxm],vis[maxm],tree[maxm],z[maxm];
+long long s[maxm],S[maxm];
+struct Point
+{
+	int x,y;
+	Point(int _x=0,int _y=0){x=_x;y=_y;}
+	inline friend Point operator + ( Point u,Point v ) { return Point(u.x+v.x,u.y+v.y); }
+	inline friend Point operator - ( Point u,Point v ) { return Point(u.x-v.x,u.y-v.y); }
+	inline friend long long operator ^ ( Point u,Point v ) { return 1LL*u.x*v.y-1LL*u.y*v.x; }
+}p[maxn];
+struct Edge { int id,u,v;double A; } e[maxm];
+inline bool operator &lt; ( Edge e1,Edge e2 ) { return dcmp(e1.A-e2.A)==0 ? e1.v&lt;e2.v : dcmp(e1.A-e2.A)==-1 ; }
+std::vector&lt;Edge&gt; h[maxn],E[maxm];
+inline void addedge ( int u,int v )
+{
+	++cnt;e[cnt]=(Edge){cnt,u,v,atan2(p[v].y-p[u].y,p[v].x-p[u].x)};h[u].push_back(e[cnt]);
+	++cnt;e[cnt]=(Edge){cnt,v,u,atan2(p[u].y-p[v].y,p[u].x-p[v].x)};h[v].push_back(e[cnt]);
+}
+inline void dfs ( int u,int fr )
+{
+	f[u]=fr;S[u]=1LL*s[u]*s[u];s[u]&lt;&lt;=1;vis[u]=1;
+	for ( Edge e:E[u] ) if ( !vis[e.v] ) tree[e.id]=tree[e.id^1]=1,dfs(e.v,u),s[u]+=s[e.v],S[u]+=S[e.v];
+}
+inline long long gcd ( long long a,long long b ) { return b ? gcd(b,a%b) : a ; }
+signed main()
+{
+	int n=read(),m=read(),q=read();
+	for ( int i=1;i&lt;=n;i++ ) p[i].x=read(),p[i].y=read();
+	while ( m-- ) addedge(read(),read());
+	for ( int i=1;i&lt;=n;i++ ) std::sort(h[i].begin(),h[i].end());
+	for ( int i=2;i&lt;=cnt;i++ )
+	{
+		int v=e[i].v;
+		auto it=std::lower_bound(h[v].begin(),h[v].end(),e[i^1]);
+		if ( it==h[v].begin() ) it=h[v].end();
+		nxt[i]=(*(--it)).id;
+	}
+	for ( int i=2;i&lt;=cnt;i++ ) if ( !bl[i] )
+	{
+		bl[i]=bl[nxt[i]]=++tot;
+		for ( int j=nxt[i];e[j].v!=e[i].u;j=nxt[j],bl[j]=tot ) s[tot]+=(p[e[j].u]-p[e[i].u])^(p[e[j].v]-p[e[i].u]);
+		if ( s[tot]&lt;=0 ) root=tot;
+	}
+	for ( int i=2;i&lt;=cnt;i++ ) E[bl[i]].push_back((Edge){i,bl[i],bl[i^1],0});
+	dfs(root,0);
+	for ( long long P=0,Q=0;q--; )
+	{
+		int k=(read()+P)%n+1;
+		for ( int i=1;i&lt;=k;i++ ) z[i]=(read()+P)%n+1;
+		z[k+1]=z[1];P=Q=0;
+		for ( int i=1;i&lt;=k;i++ )
+		{
+			int x=z[i],y=z[i+1];
+			auto it=lower_bound(h[x].begin(),h[x].end(),(Edge){0,x,y,atan2(p[y].y-p[x].y,p[y].x-p[x].x)});
+			int j=(*it).id;
+			if ( !tree[j] ) continue;
+			if ( f[bl[j]]==bl[j^1] ) P+=S[bl[j]],Q+=s[bl[j]];
+			else P-=S[bl[j^1]],Q-=s[bl[j^1]];
+		}
+		long long g=gcd(P,Q);P/=g;Q/=g;
+		printf(&quot;%lld %lld\n&quot;,P,Q);
+	}
+	return 0;
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#day3">Day3</a>
+<ul>
+<li><a href="#%E4%B8%80-%E4%BE%8B%E9%A2%98">一、例题</a></li>
+</ul>
+</li>
+<li><a href="#day4">Day4</a>
+<ul>
+<li><a href="#%E4%B8%80-%E4%BE%8B%E9%A2%98-2">一、例题</a>
+<ul>
+<li><a href="#step-1%E6%B1%82%E9%87%8D%E5%BF%83">Step 1：求重心</a></li>
+<li><a href="#step-2%E7%AE%97%E9%9D%A2%E7%A7%AF">Step 2：算面积</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://rensheyu.github.io/subject-geometry-1/">
+              <h3 class="post-title">
+                2020 寒假专题训练：计算几何 Part 1
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by 
+<a href="https://github.com/getgridea/gridea" target="_blank"> &nbsp;Gridea</a>
+  <a class="rss" href="https://rensheyu.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
