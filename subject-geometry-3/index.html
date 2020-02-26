@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>2020 寒假专题训练：计算几何 Part 3 | _RSY_&#39;s blog</title>
-<link rel="shortcut icon" href="https://rensheyu.github.io/favicon.ico?v=1582743645043">
+<link rel="shortcut icon" href="https://rensheyu.github.io/favicon.ico?v=1582743661237">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://rensheyu.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="2020 寒假专题训练：计算几何 Part 3 | _RSY_&#39;s blog - Atom Feed" href="https://rensheyu.github.io/atom.xml">
@@ -12,9 +12,9 @@
 
 
     <meta name="description" content="Day 5
-一、自适应simpson积分法
+一、自适应 simpson 积分法
 考虑这么一个问题：求任意曲线与 xxx 轴，直线 x=lx=lx=l，直线 x=rx=rx=r 包围的图形的面积.
-曲边梯形的面积问题，通常用定积分可以解决. 但任意曲线就出现了一个问题：如何求解..." />
+曲边梯形的面积问题，通常用定积分可以解决. 但任意曲线就出现了一个问题：如何..." />
     <meta name="keywords" content="专题" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -24,7 +24,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://rensheyu.github.io">
-  <img class="avatar" src="https://rensheyu.github.io/images/avatar.png?v=1582743645043" alt="">
+  <img class="avatar" src="https://rensheyu.github.io/images/avatar.png?v=1582743661237" alt="">
   </a>
   <h1 class="site-title">
     _RSY_&#39;s blog
@@ -84,7 +84,7 @@
             <div class="post-content-wrapper">
               <div class="post-content">
                 <h1 id="day-5">Day 5</h1>
-<h2 id="一-自适应simpson积分法">一、自适应simpson积分法</h2>
+<h2 id="一-自适应-simpson-积分法">一、自适应 simpson 积分法</h2>
 <p>考虑这么一个问题：求任意曲线与 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 轴，直线 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>=</mo><mi>l</mi></mrow><annotation encoding="application/x-tex">x=l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>，直线 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>=</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">x=r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span> 包围的图形的面积.</p>
 <p>曲边梯形的面积问题，通常用定积分可以解决. 但任意曲线就出现了一个问题：如何求解定积分？</p>
 <p>显然对于任意函数，求解定积分不是那么容易，我们考虑用近似的方式解决问题.</p>
@@ -700,7 +700,7 @@ int main()
                 <ul class="markdownIt-TOC">
 <li><a href="#day-5">Day 5</a>
 <ul>
-<li><a href="#%E4%B8%80-%E8%87%AA%E9%80%82%E5%BA%94simpson%E7%A7%AF%E5%88%86%E6%B3%95">一、自适应simpson积分法</a></li>
+<li><a href="#%E4%B8%80-%E8%87%AA%E9%80%82%E5%BA%94-simpson-%E7%A7%AF%E5%88%86%E6%B3%95">一、自适应 simpson 积分法</a></li>
 <li><a href="#%E4%BA%8C-%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2%E4%B8%8E%E7%9F%A9%E9%98%B5">二、仿射变换与矩阵</a></li>
 </ul>
 </li>
