@@ -1,0 +1,379 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>2020 省选模拟测试 Round #9 solution (20/02/08) | _RSY_&#39;s blog</title>
+<link rel="shortcut icon" href="https://rensheyu.github.io/favicon.ico?v=1582735765885">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://rensheyu.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="2020 省选模拟测试 Round #9 solution (20/02/08) | _RSY_&#39;s blog - Atom Feed" href="https://rensheyu.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="【比赛链接】
+A. 树
+【题解】
+手算一遍样例，就大概清楚题目的做法了. 显然每条路径在一段上贡献的答案是一个等差数列，在三个节点处打上标记，差分即可。细节详见代码.
+效率 O(nlog⁡n)O(n \log n)O(nlogn)，瓶颈在于..." />
+    <meta name="keywords" content="测试" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://rensheyu.github.io">
+  <img class="avatar" src="https://rensheyu.github.io/images/avatar.png?v=1582735765885" alt="">
+  </a>
+  <h1 class="site-title">
+    _RSY_&#39;s blog
+  </h1>
+  <p class="site-description">
+    滚落沙尘，泛生浮光。掠影千年，奔走四方。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              2020 省选模拟测试 Round #9 solution (20/02/08)
+            </h2>
+            <div class="post-info">
+              <span>
+                20200227
+              </span>
+              <span>
+                12 min read
+              </span>
+              
+                <a href="https://rensheyu.github.io/contest/" class="post-tag">
+                  # 测试
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p><a href="http://59.61.75.5:8018/contest/219">【比赛链接】</a></p>
+<h2 id="a-树">A. 树</h2>
+<p>【题解】</p>
+<p>手算一遍样例，就大概清楚题目的做法了. 显然每条路径在一段上贡献的答案是一个等差数列，在三个节点处打上标记，差分即可。细节详见代码.</p>
+<p>效率 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n \log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，瓶颈在于求 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>c</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">lca</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span></span></span></span>.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+const int maxn=300000+10;
+int dep[maxn],Log[maxn],p[maxn][22],n;
+long long ans[maxn],res[maxn],Ans;
+std::vector&lt;int&gt; e[maxn];
+inline int lca ( int u,int v )
+{
+	if ( dep[u]&lt;dep[v] ) std::swap(u,v);
+	for ( int i=Log[dep[u]];~i;i-- ) if ( dep[p[u][i]]&gt;=dep[v] ) u=p[u][i];
+	if ( u==v ) return u;
+	for ( int i=Log[dep[u]];~i;i-- ) if ( p[u][i]!=p[v][i] ) u=p[u][i],v=p[v][i];
+	return p[u][0];
+}
+inline void dfs ( int u,int fr )
+{
+	dep[u]=dep[p[u][0]=fr]+1;
+	for ( int i=1;p[u][i-1];i++ ) p[u][i]=p[p[u][i-1]][i-1];
+	for ( int v:e[u] ) if ( v!=fr ) dfs(v,u);
+}
+inline void solve ( int u,int fr )
+{
+	for ( int v:e[u] ) if ( v!=fr ) solve(v,u),ans[u]+=ans[v],res[u]+=res[v];
+}
+inline void calc ( int u,int fr )
+{
+	ans[u]=ans[u]*dep[u]+res[u]+ans[fr];
+	for ( int v:e[u] ) if ( v!=fr ) calc(v,u);
+}
+signed main()
+{
+	freopen(&quot;tree.in&quot;,&quot;r&quot;,stdin);
+	freopen(&quot;tree.out&quot;,&quot;w&quot;,stdout);
+	int m;scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+	for ( int i=2,u,v;i&lt;=n;i++ ) scanf(&quot;%d%d&quot;,&amp;u,&amp;v),e[u].push_back(v),e[v].push_back(u),Log[i]=Log[i&gt;&gt;1]+1;
+	dfs(1,0);
+	for ( int u,v,l;m--; )
+		scanf(&quot;%d%d&quot;,&amp;u,&amp;v),l=lca(u,v),
+		ans[u]-=2,res[u]+=2*dep[l]-dep[v]+dep[u]+1,
+		ans[v]-=2,res[v]+=2*dep[l]-dep[u]+dep[v]+1,
+		ans[l]+=4,res[l]-=4*dep[l]+2,
+		Ans+=1LL*(dep[u]-dep[l])*(dep[v]-dep[l]);
+	solve(1,0);calc(1,0);
+	for ( int i=1;i&lt;=n;i++ ) printf(&quot;%lld\n&quot;,ans[i]+Ans);
+	return 0;
+}
+</code></pre>
+<h2 id="b-方程">B. 方程</h2>
+<p>【题解】</p>
+<p>同样手算一遍样例. 发现显然可以逐位贪心，若首位不为0则显然后面的位置可以随意选来补齐.</p>
+<p>因此考虑逐位 dp. 设 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">f[i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> 表示前 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 个最高位为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 的数选了 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 个的方案数. 转移方程参见代码.</p>
+<p>效率 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>T</mi><mo>×</mo><mn>31</mn><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(T \times 31n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord">1</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+const int mod=1000000007;
+int n,k,a[100],f[100][100],ans;
+inline int power ( int x,int y )
+{
+	int z=1;
+	for ( ;y;y&gt;&gt;=1,x=1LL*x*x%mod ) if ( y&amp;1 ) z=1LL*z*x%mod;
+	return z;
+}
+signed main()
+{
+	while ( ~scanf(&quot;%d%d&quot;,&amp;n,&amp;k) )
+	{
+		int m=0;
+		for ( int i=1;i&lt;=n;i++ ) scanf(&quot;%d&quot;,&amp;a[i]),m^=a[i];
+		ans=(m==k);
+		for ( int i=30;~i;i-- ) if ( (m&gt;&gt;(i+1))==(k&gt;&gt;(i+1)) )
+		{
+			for ( int j=0;j&lt;=n;j++ ) for ( int l=0;l&lt;=n;l++ ) f[j][l]=0;
+			f[0][0]=1;
+			for ( int j=1;j&lt;=n;j++ )
+			{
+				for ( int l=0;l&lt;=n;l++ ) f[j][l]=(f[j][l]+1LL*(f[j-1][l]*(1+a[j]%(1&lt;&lt;i))))%mod;
+				if ( (a[j]&gt;&gt;i)&amp;1 ) for ( int l=0;l&lt;=n;l++ ) f[j][l+1]=(f[j][l+1]+f[j-1][l])%mod;
+			}
+			for ( int j=1;j&lt;=n;j++ ) if ( ((j^(m&gt;&gt;i)^(k&gt;&gt;i))&amp;1)^1 ) ans=(ans+1LL*power((1&lt;&lt;i)%mod,j-1)*f[n][j])%mod;
+		}
+		printf(&quot;%d\n&quot;,ans);
+	}
+	return 0;
+}
+</code></pre>
+<h2 id="c-圈">C. 圈</h2>
+<p>【题解】</p>
+<p>考虑题目的限制：度数大于等于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>.</p>
+<p>这个性质不好用，考虑改造，使度数等于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>.</p>
+<p>先把哈密顿回路扔出来，作为第一个圈.</p>
+<p>若一个点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 有不在哈密顿回路上的边有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo>)</mo><mo separator="true">,</mo><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>z</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(x,y),(x,z)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mclose">)</span></span></span></span>，我们新建⽴立一个点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span>，假设 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 在哈密顿回路上下一个点是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span>，则把 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>w</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(x,w)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mclose">)</span></span></span></span> 拆成 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>p</mi><mo>)</mo><mo separator="true">,</mo><mo>(</mo><mi>p</mi><mo separator="true">,</mo><mi>w</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(x,p),(p,w)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">p</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mord mathdefault">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mclose">)</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>z</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(x,z)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mclose">)</span></span></span></span> 变成 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>p</mi><mo separator="true">,</mo><mi>z</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(p,z)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mclose">)</span></span></span></span>. 我们对这个图求完圈覆盖后，只要把 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">x,p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">p</span></span></span></span> 变回同一个点，且缩掉 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>p</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(x,p)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">p</span><span class="mclose">)</span></span></span></span> 即可。至此转化完毕.</p>
+<p>此时只剩下偶数个点. 将哈密顿回路上的边分为两类，分别匹配一遍即可. 分法很多，可采用如下办法：所有匹配边 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>+</mo><mo>{</mo><mo>(</mo><mn>2</mn><mi>i</mi><mo separator="true">,</mo><mn>2</mn><mi>i</mi><mo>+</mo><mn>1</mn><mo>)</mo><mo>}</mo></mrow><annotation encoding="application/x-tex">+\{(2i,2i+1)\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">+</span><span class="mopen">{</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mclose">}</span></span></span></span> 与所有匹配边 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>+</mo><mo>{</mo><mo>(</mo><mn>2</mn><mi>i</mi><mo separator="true">,</mo><mn>2</mn><mi>i</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>}</mo></mrow><annotation encoding="application/x-tex">+\{(2i,2i-1)\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">+</span><span class="mopen">{</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mclose">}</span></span></span></span>.</p>
+<p>考虑具体实现，将边黑白染色即可，而不用写出拆边的代码.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+inline int read ( void )
+{
+	int x=0;char ch;
+	while ( !isdigit(ch=getchar()) ) ;
+	for ( x=ch^48;isdigit(ch=getchar()); ) x=(x&lt;&lt;1)+(x&lt;&lt;3)+(ch^48);
+	return x;
+}
+struct edge { int v,x; } G[1000][1000];
+std::vector&lt;std::vector&lt;int&gt;&gt; Circles;
+std::vector&lt;int&gt; Cir;
+int n,m,siz[1000],map[1000][1000];
+bool vis[1000][1000];
+inline edge Next ( int u,int x )
+{
+	if ( x!=siz[u] ) return (edge){u,x+1};
+	if ( u==n ) return (edge){1,1};
+	return (edge){u+1,1};
+}
+inline edge Prev ( int u,int x )
+{
+	if ( x!=1 ) return (edge){u,x-1};
+	if ( u==1 ) return (edge){n,siz[n]};
+	return (edge){u-1,siz[u-1]};
+}
+inline void Ins ( int u )
+{
+	if ( (int)Cir.size() and Cir[(int)Cir.size()-1]==u ) return;
+	Cir.push_back(u);
+}
+inline void dfs ( int u,int x,int k )
+{
+	vis[u][x]=true;Ins(u);bool f=(map[u][x]==k);
+	edge w=f?Next(u,x):Prev(u,x);Ins(w.v);
+	while ( w.x==1 ) w=(f?Next(w.v,w.x):Prev(w.v,w.x)),Ins(w.v);
+	u=w.v;x=w.x;Ins(u);vis[u][x]=true;w=G[u][x];u=w.v;x=w.x;
+	if ( !vis[u][x] ) Ins(u),vis[u][x]=true,dfs(u,x,k);
+}
+signed main()
+{
+	for ( int T=read();T--; )
+	{
+		Circles.clear();n=read();m=read();
+		for ( int i=1;i&lt;=n;i++ ) for ( int j=1;j&lt;=m;j++ ) G[i][j]=(edge){0,0};
+		for ( int i=1;i&lt;=n;i++ ) siz[i]=1;
+		for ( int i=1;i&lt;=m;i++ )
+		{
+			int u=read(),v=read();
+			if ( u&gt;v ) std::swap(u,v);
+			if ( v==u+1 ) continue;
+			if ( u==1 and v==n ) continue;
+			++siz[u];++siz[v];
+			G[u][siz[u]]=(edge){v,siz[v]};
+			G[v][siz[v]]=(edge){u,siz[u]};
+		}
+		for ( int i=1;i&lt;=n;i++ ) Cir.push_back(i);
+		Circles.push_back(Cir);Cir.clear();
+		int k=0;
+		for ( int i=1;i&lt;=n;i++ ) for ( int j=2;j&lt;=siz[i];j++ ) k^=1,map[i][j]=k;
+		for ( int i=1;i&lt;=n;i++ ) for ( int j=1;j&lt;=siz[i];j++ ) vis[i][j]=false;
+		for ( int i=1;i&lt;=n;i++ ) for ( int j=2;j&lt;=siz[i];j++ ) if ( !vis[i][j] ) dfs(i,j,1),Circles.push_back(Cir),Cir.clear();
+		for ( int i=1;i&lt;=n;i++ ) for ( int j=1;j&lt;=siz[i];j++ ) vis[i][j]=false;
+		for ( int i=1;i&lt;=n;i++ ) for ( int j=2;j&lt;=siz[i];j++ ) if ( !vis[i][j] ) dfs(i,j,0),Circles.push_back(Cir),Cir.clear();
+		printf(&quot;%d\n&quot;,(int)Circles.size());
+		for ( auto Circle:Circles )
+		{
+			printf(&quot;%d&quot;,(int)Circle.size());
+			for ( int x:Circle ) printf(&quot; %d&quot;,x);
+			puts(&quot;&quot;);
+		}
+	}
+	return 0;
+}
+</code></pre>
+<h2 id="d-期望逆序对">D. 期望逆序对</h2>
+<p>【题解】</p>
+<p>显然按中点排序即可. 证明自行理解.</p>
+<p>统计直接枚举两个区间算贡献，记得预处理长度逆元保证复杂度.</p>
+<p>其实也可以用线段树或树状数组维护每个值的期望个数，可以减小复杂度.</p>
+<p>效率 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n \log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+const int mod=998244353,inv2=(mod+1)&gt;&gt;1;
+struct Pair { int l,r; } p[5010];
+int n,inv[5010],ans,len[5010];
+inline int power ( int x,int y )
+{
+	int z=1;
+	for ( ;y;y&gt;&gt;=1,x=1LL*x*x%mod ) if ( y&amp;1 ) z=1LL*z*x%mod;
+	return z;
+}
+signed main()
+{
+	scanf(&quot;%d&quot;,&amp;n);
+	for ( int i=1;i&lt;=n;i++ ) scanf(&quot;%d%d&quot;,&amp;p[i].l,&amp;p[i].r);
+	std::sort(p+1,p+n+1,[&amp;](const Pair &amp;p1,const Pair &amp;p2){return p1.l+p1.r&lt;p2.l+p2.r;});
+	for ( int i=1;i&lt;=n;i++ ) len[i]=p[i].r-p[i].l+1,inv[i]=power(p[i].r-p[i].l+1,mod-2);
+	for ( int i=1;i&lt;n;i++ ) for ( int j=i+1;j&lt;=n;j++ )
+	{
+		if ( p[i].l&lt;=p[j].l and p[j].r&lt;=p[i].r )
+			ans=(ans+1LL*len[j]*(len[j]-1)/2%mod*inv[i]%mod*inv[j]%mod+1LL*(p[i].r-p[j].r)*len[j]%mod*inv[i]%mod*inv[j]%mod)%mod;
+		else if ( p[j].l&lt;=p[i].l and p[i].r&lt;=p[j].r )
+			ans=(ans+1LL*len[i]*(len[i]-1)/2%mod*inv[i]%mod*inv[j]%mod+1LL*(p[i].l-p[j].l)*len[i]%mod*inv[i]%mod*inv[j]%mod)%mod;
+		else if ( p[i].l&lt;=p[j].l and p[j].l&lt;=p[i].r )
+			ans=(ans+1LL*(p[i].r-p[j].l+1)*(p[i].r-p[j].l)/2%mod*inv[i]%mod*inv[j]%mod)%mod;
+	}
+	return !printf(&quot;%d\n&quot;,ans);
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#a-%E6%A0%91">A. 树</a></li>
+<li><a href="#b-%E6%96%B9%E7%A8%8B">B. 方程</a></li>
+<li><a href="#c-%E5%9C%88">C. 圈</a></li>
+<li><a href="#d-%E6%9C%9F%E6%9C%9B%E9%80%86%E5%BA%8F%E5%AF%B9">D. 期望逆序对</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://rensheyu.github.io/contest-220/">
+              <h3 class="post-title">
+                2020 省选模拟测试 Round #10 solution (20/02/09)
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by 
+<a href="https://github.com/getgridea/gridea" target="_blank"> &nbsp;Gridea</a>
+  <a class="rss" href="https://rensheyu.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
