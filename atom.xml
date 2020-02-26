@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://rensheyu.github.io</id>
     <title>_RSY_&apos;s blog</title>
-    <updated>2020-02-26T12:22:08.217Z</updated>
+    <updated>2020-02-26T12:23:46.695Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://rensheyu.github.io"/>
     <link rel="self" href="https://rensheyu.github.io/atom.xml"/>
@@ -2939,7 +2939,7 @@ signed main()
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2020 寒假专题训练：数论 Part 3]]></title>
+        <title type="html"><![CDATA[2020 寒假专题训练：数论 Part 3（Min_25筛坑待填）]]></title>
         <id>https://rensheyu.github.io/subject-number-theory-3/</id>
         <link href="https://rensheyu.github.io/subject-number-theory-3/">
         </link>
