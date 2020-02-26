@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>2020 省选模拟测试 Round #15 solution (20/02/25) | _RSY_&#39;s blog</title>
-<link rel="shortcut icon" href="https://rensheyu.github.io/favicon.ico?v=1582713329813">
+<link rel="shortcut icon" href="https://rensheyu.github.io/favicon.ico?v=1582718873633">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://rensheyu.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="2020 省选模拟测试 Round #15 solution (20/02/25) | _RSY_&#39;s blog - Atom Feed" href="https://rensheyu.github.io/atom.xml">
@@ -11,10 +11,11 @@
 
 
 
-    <meta name="description" content="【比赛链接】http://59.61.75.5:8018/contest/225
+    <meta name="description" content="【比赛链接】
 A. 回文
 【题解】
-PAM裸题. 考虑回文串的一个回文子串，分两类讨论，一类包含最后一个字符即母串后缀，跳回文树即可. 另一类删去首尾两个字符，沿 PAM ..." />
+PAM裸题. 考虑回文串的一个回文子串，分两类讨论，一类包含最后一个字符即母串后缀，跳回文树即可. 另一类删去首尾两个字符，沿 PAM dfs 一遍即可.
+跳回文树时记得打上标记，使子树内节点不再访问，同..." />
     <meta name="keywords" content="测试" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -24,7 +25,7 @@ PAM裸题. 考虑回文串的一个回文子串，分两类讨论，一类包含
       <div class="main-content">
         <div class="site-header">
   <a href="https://rensheyu.github.io">
-  <img class="avatar" src="https://rensheyu.github.io/images/avatar.png?v=1582713329813" alt="">
+  <img class="avatar" src="https://rensheyu.github.io/images/avatar.png?v=1582718873633" alt="">
   </a>
   <h1 class="site-title">
     _RSY_&#39;s blog
@@ -95,7 +96,7 @@ PAM裸题. 考虑回文串的一个回文子串，分两类讨论，一类包含
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>【比赛链接】http://59.61.75.5:8018/contest/225</p>
+                <p><a href="http://59.61.75.5:8018/contest/225">【比赛链接】</a></p>
 <h2 id="a-回文">A. 回文</h2>
 <p>【题解】</p>
 <p>PAM裸题. 考虑回文串的一个回文子串，分两类讨论，一类包含最后一个字符即母串后缀，跳回文树即可. 另一类删去首尾两个字符，沿 PAM dfs 一遍即可.</p>

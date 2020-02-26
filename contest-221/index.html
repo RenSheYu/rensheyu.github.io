@@ -1,0 +1,311 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>2020 省选模拟测试 Round #11 solution (20/02/15)（C题坑待填） | _RSY_&#39;s blog</title>
+<link rel="shortcut icon" href="https://rensheyu.github.io/favicon.ico?v=1582718873633">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://rensheyu.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="2020 省选模拟测试 Round #11 solution (20/02/15)（C题坑待填） | _RSY_&#39;s blog - Atom Feed" href="https://rensheyu.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="【比赛链接】
+A. 怪兽
+【题解】
+首先显然有回合越少越优. 二分求出最少需要的回合.
+分类讨论：
+①先杀 A 后杀 B：
+二分杀 A 需要的回合，若剩下的杀不了 B 则将 A 中多余的一回合删去. 可以证明，A 中一定可以删去一回合使得刚..." />
+    <meta name="keywords" content="测试" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://rensheyu.github.io">
+  <img class="avatar" src="https://rensheyu.github.io/images/avatar.png?v=1582718873633" alt="">
+  </a>
+  <h1 class="site-title">
+    _RSY_&#39;s blog
+  </h1>
+  <p class="site-description">
+    滚落沙尘，泛生浮光。掠影千年，奔走四方。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              2020 省选模拟测试 Round #11 solution (20/02/15)（C题坑待填）
+            </h2>
+            <div class="post-info">
+              <span>
+                20200226
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://rensheyu.github.io/contest/" class="post-tag">
+                  # 测试
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p><a href="http://59.61.75.5:8018/contest/221">【比赛链接】</a></p>
+<h2 id="a-怪兽">A. 怪兽</h2>
+<p>【题解】</p>
+<p>首先显然有回合越少越优. 二分求出最少需要的回合.</p>
+<p>分类讨论：</p>
+<p>①先杀 A 后杀 B：</p>
+<p>二分杀 A 需要的回合，若剩下的杀不了 B 则将 A 中多余的一回合删去. 可以证明，A 中一定可以删去一回合使得刚好杀掉 A.</p>
+<p>②先杀 B 后杀 A：</p>
+<p>最优显然构造 AAABBBAAA 的情况.</p>
+<p>逐位贪心，考虑后面能否杀完即可. 优先选 A. 具体细节参见代码.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+inline int read ( void )
+{
+	int x=0;char ch;
+	while ( !isdigit(ch=getchar()) ) ;
+	for ( x=ch^48;isdigit(ch=getchar()); ) x=(x&lt;&lt;1)+(x&lt;&lt;3)+(ch^48);
+	return x;
+}
+const int maxn=100000+10;
+long long sum[maxn];
+char ans[3][maxn];
+inline void Print ( int k,int T,long long res )
+{
+	printf(&quot;%lld &quot;,res);
+	for ( int i=1;i&lt;=T;i++ ) putchar(ans[k][i]);
+	puts(&quot;&quot;);
+}
+signed main()
+{
+	for ( int i=1;i&lt;=100003;i++ ) sum[i]=sum[i-1]+i;
+	for ( int Cases=read();Cases--; )
+	{
+		long long ha=read(),hb=read(),atka=read(),atkb=read();
+		long long T=std::lower_bound(sum+1,sum+100004,ha+hb)-sum;
+		
+		long long A=std::lower_bound(sum+1,sum+100004,ha)-sum;
+		long long vala=A*atka+T*atkb;
+		for ( long long i=1;i&lt;=A;i++ ) ans[1][i]='A';
+		for ( long long i=A+1;i&lt;=T;i++ ) ans[1][i]='B';
+		if ( sum[T]-sum[A]&lt;hb ) ans[1][sum[A]-ha]='B';
+		
+		long long B=std::lower_bound(sum+1,sum+100004,hb)-sum;
+		long long p=std::upper_bound(sum+1,sum+100004,sum[B]-hb)-sum-1;
+		long long valb=T*atka+B*atkb;
+		for ( long long i=1;i&lt;=p;i++ ) ans[2][i]='A';
+		for ( long long i=p+1;i&lt;=B;i++ ) ans[2][i]='B';
+		for ( long long i=B+1;i&lt;=T;i++ ) ans[2][i]='A';
+		if ( sum[T]-sum[B]+sum[p]&lt;ha )
+		{
+			long long res=ha-sum[T]+sum[B];
+			for ( long long i=1;i&lt;=B;i++ )
+				if ( res&gt;2*i or res==i ) res-=i,ans[2][i]='A';
+				else ans[2][i]='B';
+		}
+		
+		if ( vala&lt;valb ) Print(1,T,vala);
+		else if ( vala&gt;valb ) Print(2,T,valb);
+		else
+		{
+			int f=1;
+			for ( int i=1;i&lt;=T;i++ )
+				if ( ans[1][i]&lt;ans[2][i] ) break;
+				else if ( ans[1][i]&gt;ans[2][i] ) { f=2;break; }
+			Print(f,T,vala);
+		}
+	}
+	return 0;
+}
+</code></pre>
+<h2 id="b-区间">B. 区间</h2>
+<p>【题解】</p>
+<p>考虑转化为字符串求解. 考虑本质不同的子串，建出 SAM，则每个节点的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">right</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">h</span><span class="mord mathdefault">t</span></span></span></span> 大小即为这个节点的贡献.</p>
+<p>用单调栈维护编号，extend 时二分查找 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">right</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">h</span><span class="mord mathdefault">t</span></span></span></span> 大小对应的编号位置，计算即可.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+inline int read ( void )
+{
+	int x=0;char ch;
+	while ( !isdigit(ch=getchar()) ) ;
+	for ( x=ch^48;isdigit(ch=getchar()); ) x=(x&lt;&lt;1)+(x&lt;&lt;3)+(ch^48);
+	return x;
+}
+const int maxn=400000+10;
+int size=1,root=1,last=1,val[maxn],len[maxn],fa[maxn],st[maxn],a[maxn],tp;
+std::unordered_map&lt;int,int&gt; ch[maxn];long long sum[maxn],ans;
+inline void extend ( int c )
+{
+	int np=++size,p=last;val[np]=1;len[np]=len[p]+1;last=np;
+	while ( p and !ch[p].count(c) ) ch[p][c]=np,p=fa[p];
+	if ( !p ) fa[np]=root;
+	else
+	{
+		int q=ch[p][c];
+		if ( len[q]==len[p]+1 ) fa[np]=q;
+		else
+		{
+			int nq=++size;len[nq]=len[p]+1;fa[nq]=fa[q];
+			fa[q]=fa[np]=nq;ch[nq]=ch[q];
+			while ( p and ch[p][c]==q ) ch[p][c]=nq,p=fa[p];
+		}
+	}
+	int L=len[np]-len[fa[np]];
+	int pos=std::lower_bound(st+1,st+tp+1,L)-st;
+	ans+=sum[pos-1]+1LL*a[st[pos]]*(L-st[pos-1]);
+}
+inline void C ( void )
+{
+	for ( int i=1;i&lt;=size;i++ ) ch[i].clear(),fa[i]=0;
+	root=last=size=1;tp=0;ans=0;
+}
+signed main()
+{
+	for ( int T=read();T--;C() )
+	{
+		int n=read();
+		for ( int i=1;i&lt;=n;i++ )
+		{
+			a[i]=read();
+			while ( tp and a[st[tp]]&lt;=a[i] ) tp--;
+			st[++tp]=i;sum[tp]=sum[tp-1]+1LL*a[i]*(st[tp]-st[tp-1]);
+			extend(a[i]);
+		}
+		printf(&quot;%lld\n&quot;,ans);
+	}
+	return 0;
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#a-%E6%80%AA%E5%85%BD">A. 怪兽</a></li>
+<li><a href="#b-%E5%8C%BA%E9%97%B4">B. 区间</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://rensheyu.github.io/contest-222/">
+              <h3 class="post-title">
+                2020 省选模拟测试 Round #12 solution (20/02/18)
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by 
+<a href="https://github.com/getgridea/gridea" target="_blank"> &nbsp;Gridea</a>
+  <a class="rss" href="https://rensheyu.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

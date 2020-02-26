@@ -1,0 +1,422 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>2020 省选模拟测试 Round #14 solution (20/02/22) | _RSY_&#39;s blog</title>
+<link rel="shortcut icon" href="https://rensheyu.github.io/favicon.ico?v=1582718873633">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://rensheyu.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="2020 省选模拟测试 Round #14 solution (20/02/22) | _RSY_&#39;s blog - Atom Feed" href="https://rensheyu.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="【比赛链接】
+A. 雕像
+【题解】
+一般最大最小问题可用二分解决，而和的最小值/最大值类问题可用 dp 凸优化（wqs 二分）解决.
+外层使用 dp 凸优化，内层 dp 符合要求覆盖所有村庄需要的最少雕像个数，由于满足四边形不等式，单调队列..." />
+    <meta name="keywords" content="测试" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://rensheyu.github.io">
+  <img class="avatar" src="https://rensheyu.github.io/images/avatar.png?v=1582718873633" alt="">
+  </a>
+  <h1 class="site-title">
+    _RSY_&#39;s blog
+  </h1>
+  <p class="site-description">
+    滚落沙尘，泛生浮光。掠影千年，奔走四方。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              2020 省选模拟测试 Round #14 solution (20/02/22)
+            </h2>
+            <div class="post-info">
+              <span>
+                20200226
+              </span>
+              <span>
+                13 min read
+              </span>
+              
+                <a href="https://rensheyu.github.io/contest/" class="post-tag">
+                  # 测试
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p><a href="http://59.61.75.5:8018/contest/224">【比赛链接】</a></p>
+<h2 id="a-雕像">A. 雕像</h2>
+<p>【题解】</p>
+<p>一般最大最小问题可用二分解决，而和的最小值/最大值类问题可用 dp 凸优化（wqs 二分）解决.</p>
+<p>外层使用 dp 凸优化，内层 dp 符合要求覆盖所有村庄需要的最少雕像个数，由于满足四边形不等式，单调队列+二分优化 dp 即可.</p>
+<p>效率 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><msub><mi>a</mi><mi>i</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n \log n \log \sum\limits_{i=1}^n a_i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.329066em;vertical-align:-0.9776689999999999em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3513970000000004em;"><span style="top:-2.122331em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.0000050000000003em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∑</span></span></span><span style="top:-3.950005em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9776689999999999em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+const long long inf=1LL&lt;&lt;60;
+const int maxn=300000+10;
+long long sum[maxn],f[maxn];
+int a[maxn],g[maxn],q[maxn],pos[maxn],n,k;
+inline long long query ( int l,int r ) { return sum[l-1]+sum[r]-sum[(l+r)/2]-sum[(l+r-1)/2]; }
+inline void solve ( long long k )
+{
+	for ( int i=1;i&lt;=n;i++ ) f[i]=inf,g[i]=q[i]=pos[i]=0;
+	int l=1,r=1;pos[1]=n;
+	for ( int i=1;i&lt;=n;i++ )
+	{
+		while ( l&lt;r and pos[l]&lt;=i ) l++;
+		f[i]=f[q[l]]+query(q[l]+1,i)+k;
+		g[i]=g[q[l]]+1;
+		while ( l&lt;r )
+		{
+			long long lst=f[q[r]]+query(q[r]+1,pos[r-1]);
+			long long res=f[i]+query(i+1,pos[r-1]);
+			if ( lst&lt;res or ( lst==res and g[q[r]]&lt;=g[i] ) ) break;
+			r--;
+		}
+		int ll=q[r],rr=n+1;
+		while ( ll&lt;rr )
+		{
+			int mid=(ll+rr)&gt;&gt;1;
+			long long lst=f[q[r]]+query(q[r]+1,mid);
+			long long res=f[i]+query(i+1,mid);
+			if ( lst&gt;res or ( lst==res and g[q[r]]&gt;g[i] ) ) rr=mid;
+			else ll=mid+1;
+		}
+		pos[r]=ll;q[++r]=i;
+	}
+}
+signed main()
+{
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;k);
+	for ( int i=1;i&lt;=n;i++ ) scanf(&quot;%d&quot;,&amp;a[i]),sum[i]=sum[i-1]+a[i];
+	long long l=0,r=sum[n];
+	while ( l&lt;r )
+	{
+		long long mid=(l+r)&gt;&gt;1;
+		solve(mid);
+		if ( g[n]&gt;k ) l=mid+1;
+		else r=mid;
+	}
+	solve(l);
+	return !printf(&quot;%lld\n&quot;,f[n]-k*l);
+}
+</code></pre>
+<h2 id="b-函数">B. 函数</h2>
+<p>【题解】</p>
+<p>显然 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mo>(</mo><mi>d</mi><mo>)</mo><mo>=</mo><msub><mo>∏</mo><mrow><mi>p</mi><mtext> is prime</mtext></mrow></msub><mi>g</mi><mo>(</mo><mi>p</mi><mo separator="true">,</mo><mi>d</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">H(d)=\prod\limits_{p\text{ is prime}} g(p,d)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathdefault">d</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.8696200000000003em;vertical-align:-1.119615em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7500050000000001em;"><span style="top:-2.116493em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord text mtight"><span class="mord mtight"> is prime</span></span></span></span></span><span style="top:-3.0000050000000003em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∏</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.119615em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathdefault">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mclose">)</span></span></span></span> 是积性函数。由二平方和定理~~（打表找规律）~~可知 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mo>(</mo><msup><mi>p</mi><mi>e</mi></msup><mo>)</mo><mo>=</mo><mn>3</mn><mi>e</mi><mo>+</mo><mn>1</mn><mtext> </mtext><mo>(</mo><mi>p</mi><mo>≡</mo><mn>1</mn><mspace></mspace><mspace width="0.4444444444444444em"/><mo>(</mo><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mspace width="0.3333333333333333em"/><mn>4</mn><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">H(p^e)=3e+1\,(p\equiv 1\pmod 4)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">3</span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mord mathdefault">p</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.4444444444444444em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:0.3333333333333333em;"></span><span class="mord">4</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>，Min_25 筛即可.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+long long n,m,pr[100000],tot,Pow[100000],g[100000],S1[100000][5],S2[100000][5],sum1[100000],sum2[100000];
+bool flag[100000];
+inline long long f ( long long p,long long k ) { return (p%4==1) ? 3*k+1 : 1 ; }
+inline long long Min_25 ( long long x,long long k )
+{
+	if ( x&lt;=1 or pr[k]&gt;x ) return 0;
+	long long ans=((x&lt;=m)?sum1[x]:sum2[n/x])-Pow[k-1];
+	for ( long long i=k;i&lt;=tot and pr[i]*pr[i]&lt;=x;i++ ) for ( long long v=pr[i],j=1;v*pr[i]&lt;=x;v*=pr[i],j++ ) ans+=Min_25(x/v,i+1)*f(pr[i],j)+f(pr[i],j+1);
+	return ans;
+}
+signed main()
+{
+	long long T;
+	for ( scanf(&quot;%lld&quot;,&amp;T);T--; )
+	{
+		scanf(&quot;%lld&quot;,&amp;n);m=(long long)sqrt(n);
+		for ( long long i=1;i&lt;=m;i++ ) flag[i]=true;
+		flag[1]=false;tot=0;
+		for ( long long i=2;i&lt;=m;i++ )
+		{
+			if ( flag[i] ) pr[++tot]=i,Pow[tot]=Pow[tot-1]+((i%4==1)?4:1);
+			for ( long long j=1;j&lt;=tot and pr[j]*i&lt;=m;j++ )
+			{
+				flag[i*pr[j]]=false;
+				if ( !(i%pr[j]) ) break;
+			}
+		}
+		for ( long long i=1;i&lt;=n;i=n/(n/(i+1)) )
+		{
+			if ( i&lt;=m ) for ( long long j=0;j&lt;4;j++ ) S1[i][j]=(i-1)/4+((i-1)%4&gt;=(j+3)%4);
+			else for ( long long j=0;j&lt;4;j++ ) S2[n/i][j]=(i-1)/4+((i-1)%4&gt;=(j+3)%4);
+			if ( i==n ) break;
+		}
+		for ( long long i=1;i&lt;=tot;i++ )
+		{
+			long long p=pr[i],p2=p*p;
+			for ( long long a=n;a&gt;=p2;a=n/(n/a+1) ) for ( long long j=0;j&lt;4;j++ )
+				if ( a&lt;=m )
+				{
+					if ( a/p&lt;=m ) S1[a][p*j%4]-=S1[a/p][j]-S1[p-1][j];
+					else S1[a][p*j%4]-=S2[n/(a/p)][j]-S1[p-1][j];
+				}
+				else
+				{
+					if ( a/p&lt;=m ) S2[n/a][p*j%4]-=S1[a/p][j]-S1[p-1][j];
+					else S2[n/a][p*j%4]-=S2[n/(a/p)][j]-S1[p-1][j];
+				}
+		}
+		for ( long long i=1;i&lt;=n;i=n/(n/(i+1)) )
+		{
+			if ( i&lt;=m ) S1[i][1]--;
+			else S2[n/i][1]--;
+			if ( i==n ) break;
+		}
+		for ( long long i=1;i&lt;=n;i=n/(n/(i+1)) )
+		{
+			if ( i&lt;=m ) sum1[i]=4*S1[i][1]+S1[i][3]+1;
+			else sum2[n/i]=4*S2[n/i][1]+S2[n/i][3]+1;
+			if ( i==n ) break;
+		}
+		printf(&quot;%lld\n&quot;,Min_25(n,1)+1);
+	}
+	return 0;
+}
+</code></pre>
+<h2 id="c-incomparable-pairs">C. Incomparable Pairs</h2>
+<p>【题解】</p>
+<p>考虑容斥，计算子串 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> 为子串 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span> 的子串数量.</p>
+<p>对 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span> 建 SAM，对于每一个一个本质不同的子串，计算它包含的本质不同的子串个数之和就是答案.</p>
+<p>一个子串可能出现多次，任意选取一次就可以计算答案. 而对于自动机上的一个节点，它产生的贡献为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>s</mi><mrow><mi>min</mi><mo>⁡</mo><mo separator="true">,</mo><mi>r</mi></mrow></msub><mo separator="true">,</mo><msub><mi>s</mi><mrow><mi>min</mi><mo>⁡</mo><mo>+</mo><mn>1</mn><mo separator="true">,</mo><mi>r</mi></mrow></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>s</mi><mrow><mi>max</mi><mo>⁡</mo><mo separator="true">,</mo><mi>r</mi></mrow></msub></mrow><annotation encoding="application/x-tex">s_{\min,r},s_{\min+1,r},\dots,s_{\max,r}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.317502em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight">min</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.317502em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight">min</span><span class="mspace mtight" style="margin-right:0.19516666666666668em;"></span><span class="mord mtight">+</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight">max</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span> 中的本质不同的子串.</p>
+<p>设 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">p_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 表示从 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 开始，到现在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span> 的本质不同子串的个数（位置不同的相同子串只记录最后一次），可以对每一个本质不同的字串，在它最后一次出现的左端点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">+</span><span class="mord">1</span></span></span></span>.</p>
+<p>每插入一个字符，就算一次新增的自动机节点的贡献，当 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span> 变大的时候，在 parent 树上从新增节点到根的最后出现位置都会更改。相当于把 parent 树上这一条链染色. 用 LCT 维护.</p>
+<p>发现我们要求的是后缀和后的区间和，可以在线段树上区间加等差数列.</p>
+<p>发现 SAM 上节点可能分裂，这里查询答案的时候用原来的大小，查询这个节点原来的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>R</mi><mo>−</mo><mi>max</mi><mo>⁡</mo><mo>+</mo><mn>1</mn><mo separator="true">,</mo><mi>R</mi><mo>−</mo><mi>min</mi><mo>⁡</mo><mo>+</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">[R-\max+1,R-\min+1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mop">max</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">+</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">min</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">+</span><span class="mord">1</span><span class="mclose">]</span></span></span></span>. 累加就是答案.</p>
+<p>效率 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><msup><mi>log</mi><mo>⁡</mo><mn>2</mn></msup><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n \log^2 n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.148448em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8984479999999999em;"><span style="top:-3.1473400000000002em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+const int maxn=200000+10;
+int n,pos[maxn],root,last,size,nxt[maxn][27],min[maxn],max[maxn],fa[maxn],ch[maxn][2],val[maxn];
+char s[maxn];
+struct tree { long long val,tag1,tag2; } t[maxn&lt;&lt;2];
+#define ls (k&lt;&lt;1)
+#define rs (k&lt;&lt;1|1)
+#define mid ((l+r)&gt;&gt;1)
+inline void modify1 ( int k,int len,long long w ) { t[k].val+=w*len;t[k].tag1+=w; }
+inline void modify2 ( int k,int len,long long l,long long w ) { t[k].val+=l*len+1LL*len*(len+1)/2*w;t[k].tag1+=l;t[k].tag2+=w; }
+inline void pushdown ( int k,int len )
+{
+   if ( t[k].tag1 ) modify1(ls,(len+1)&gt;&gt;1,t[k].tag1),modify1(rs,len&gt;&gt;1,t[k].tag1),t[k].tag1=0;
+   if ( t[k].tag2 ) modify2(ls,(len+1)&gt;&gt;1,t[k].tag2*(len&gt;&gt;1),t[k].tag2),modify2(rs,len&gt;&gt;1,0,t[k].tag2),t[k].tag2=0;
+}
+inline void update1 ( int k,int l,int r,int ql,int qr,long long w )
+{
+   if ( ql&lt;=l and r&lt;=qr ) { modify1(k,r-l+1,w);return; }
+   pushdown(k,r-l+1);
+   if ( ql&lt;=mid ) update1(ls,l,mid,ql,qr,w);
+   if ( qr&gt;mid ) update1(rs,mid+1,r,ql,qr,w);
+   t[k].val=t[ls].val+t[rs].val;
+}
+inline void update2 ( int k,int l,int r,int ql,int qr,long long w )
+{
+   if ( ql&lt;=l and r&lt;=qr ) { modify2(k,r-l+1,(qr-r)*w,w);return; }
+   pushdown(k,r-l+1);
+   if ( ql&lt;=mid ) update2(ls,l,mid,ql,qr,w);
+   if ( qr&gt;mid ) update2(rs,mid+1,r,ql,qr,w);
+   t[k].val=t[ls].val+t[rs].val;
+}
+inline void change ( int l,int r,long long v )
+{
+   if ( l&gt;1 ) update1(1,1,n,1,l-1,(r-l+1)*v);
+   if ( l&gt;0 and r&gt;0 and l&lt;=r ) update2(1,1,n,l,r,v);
+}
+inline long long query ( int k,int l,int r,int ql,int qr )
+{
+   if ( ql&lt;=l and r&lt;=qr ) return t[k].val;
+   pushdown(k,r-l+1);long long res=0;
+   if ( ql&lt;=mid ) res+=query(ls,l,mid,ql,qr);
+   if ( qr&gt;mid ) res+=query(rs,mid+1,r,ql,qr);
+   return res;
+}
+#undef ls
+#undef rs
+#undef mid
+#define ls(x) ch[x][0]
+#define rs(x) ch[x][1]
+inline void pushdown ( int x ) { val[ls(x)]=val[rs(x)]=val[x]; }
+inline int get ( int x,int k=1 ) { return ch[fa[x]][k]==x; }
+inline bool nroot ( int x ) { return get(x,0) || get(x,1); }
+inline void rotate ( int x )
+{
+   int y=fa[x],z=fa[y],k=get(x);
+   if ( nroot(y) ) ch[z][get(y)]=x;
+   fa[ch[y][k]=ch[x][!k]]=y,ch[x][!k]=y;
+   fa[y]=x,fa[x]=z;
+}
+int st[maxn],tp;
+inline void splay ( int x )
+{
+   st[tp=1]=x;
+   for ( int y=x;nroot(y);st[++tp]=y=fa[y] ) ;
+   for ( ;tp;tp-- ) pushdown(st[tp]);
+   for ( ;nroot(x);rotate(x) ) if ( nroot(fa[x]) ) (get(x)^get(fa[x])) ? rotate(x) : rotate(fa[x]);
+}
+inline void access ( int x,int v )
+{
+   for ( int y=0;x; ) splay(x),rs(x)=y,change(val[x]-max[x]+1,val[x]-max[fa[x]],-1),y=x,x=fa[x];
+   splay(1);val[1]=v;change(1,v,1);
+}
+unsigned long long num,ans;
+inline int extend ( int c )
+{
+   int np=++size,p=last;max[np]=max[p]+1;last=np;
+   while ( p and !nxt[p][c] ) nxt[p][c]=np,p=fa[p];
+   if ( !p ) fa[np]=root;
+   else
+   {
+   	int q=nxt[p][c];
+   	if ( max[q]==max[p]+1 ) fa[np]=q;
+   	else
+   	{
+   		int nq=++size;max[nq]=max[p]+1;fa[nq]=fa[q];
+   		fa[q]=fa[np]=nq;memcpy(nxt[nq],nxt[q],sizeof(nxt[nq]));
+   		while ( p and nxt[p][c]==q ) nxt[p][c]=nq,p=fa[p];
+   	}
+   }
+   num+=max[np]-max[fa[np]];min[np]=max[fa[np]]+1;
+   return np;
+}
+signed main()
+{
+   scanf(&quot; %s&quot;,s+1);n=strlen(s+1);root=last=++size;
+   for ( int i=1;i&lt;=n;i++ ) pos[i]=extend(s[i]^96);
+   for ( int i=1;i&lt;=n;i++ ) access(pos[i],i),ans+=query(1,1,n,i-max[pos[i]]+1,i-min[pos[i]]+1);
+   if ( num&amp;1 ) num=(num+1)/2*num;
+   else num=num/2*(num+1);
+   return !printf(&quot;%llu\n&quot;,num-ans);
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#a-%E9%9B%95%E5%83%8F">A. 雕像</a></li>
+<li><a href="#b-%E5%87%BD%E6%95%B0">B. 函数</a></li>
+<li><a href="#c-incomparable-pairs">C. Incomparable Pairs</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://rensheyu.github.io/subject-geometry-3/">
+              <h3 class="post-title">
+                2020 寒假专题训练：计算几何 Part 3
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by 
+<a href="https://github.com/getgridea/gridea" target="_blank"> &nbsp;Gridea</a>
+  <a class="rss" href="https://rensheyu.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
