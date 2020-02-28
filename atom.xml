@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://rensheyu.github.io</id>
     <title>_RSY_&apos;s blog</title>
-    <updated>2020-02-28T11:14:44.908Z</updated>
+    <updated>2020-02-28T14:54:07.006Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://rensheyu.github.io"/>
     <link rel="self" href="https://rensheyu.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://rensheyu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, _RSY_&apos;s blog</rights>
     <entry>
-        <title type="html"><![CDATA[2020 省选模拟测试 Round #16 solution (20/02/27)（C题坑待填）]]></title>
+        <title type="html"><![CDATA[2020 省选模拟测试 Round #16 solution (20/02/27)]]></title>
         <id>https://rensheyu.github.io/contest-226/</id>
         <link href="https://rensheyu.github.io/contest-226/">
         </link>
@@ -251,6 +251,132 @@ signed main()
 	}
 	A.build();int Q;
 	for ( scanf(&quot;%d&quot;,&amp;Q);Q--; ) B.solve();
+	return 0;
+}
+</code></pre>
+<h2 id="c-归并">C. 归并</h2>
+<p>【题解】</p>
+<p>注意 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">l=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>.</p>
+<p>考虑每次合并在做什么. 这是个类似归并排序的做法，区别在于未保证原来两边的数组有序. 分析可得，归并时两段一定是拆成一小段一小段合并的，其中每一小段满足段首为最大值.</p>
+<p>因此可以考虑维护这样的段. 由于需要对段进行分裂，考虑用平衡树维护.</p>
+<p>考虑每次分裂后的操作，需要按开头排序. 根据划分的性质，开始时开头即为有序的. 因此任意时刻开头均有序，用线段树存下开头元素维护即可.</p>
+<p>查询时先在线段树上二分找到段，再在平衡树上找到段的对应的数.</p>
+<p>显然拆分最多只会拆分 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 次，效率 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>+</mo><mi>q</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n \log n + q \log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+inline int read ( void )
+{
+	int x=0;char ch;
+	while ( !isdigit(ch=getchar()) ) ;
+	for ( x=ch^48;isdigit(ch=getchar()); ) x=(x&lt;&lt;1)+(x&lt;&lt;3)+(ch^48);
+	return x;
+}
+const int maxn=100000+10;
+int n,a[maxn],t[maxn&lt;&lt;2];
+struct Splay
+{
+	int fa[maxn],ch[maxn][2],siz[maxn],val[maxn];
+	inline void pushup ( int k )
+	{
+		siz[k]=siz[ch[k][0]]+siz[ch[k][1]]+1;
+		val[k]=std::max(std::max(val[ch[k][0]],val[ch[k][1]]),k);
+	}
+	inline int get ( int x ) { return ch[fa[x]][1]==x; }
+	inline void rotate ( int x )
+	{
+		int y=fa[x],z=fa[y],k=get(x);
+		ch[z][ch[z][1]==y]=x;fa[x]=z;
+		ch[y][k]=ch[x][k^1];fa[ch[x][k^1]]=y;
+		ch[x][k^1]=y;fa[y]=x;
+		pushup(y);pushup(x);
+	}
+	inline void splay ( int x )
+	{
+		while ( fa[x] )
+		{
+			int y=fa[x];
+			if ( !fa[y] ) { rotate(x);break; }
+			rotate((get(x)^get(y))?x:y);rotate(x);
+		}
+		pushup(x);
+	}
+	inline int query ( int x,int k )
+	{
+		splay(x);
+		while ( k!=siz[ch[x][0]]+1 )
+			if ( k&lt;=siz[ch[x][0]] ) x=ch[x][0];
+			else k-=siz[ch[x][0]]+1,x=ch[x][1];
+		return x;
+	}
+	inline int find ( int x )
+	{
+		int y=ch[x][1];
+		while ( true )
+		{
+			if ( val[ch[y][0]]&gt;x ) y=ch[y][0];
+			else if ( y&gt;x ) return y;
+			else y=ch[y][1];
+		}
+	}
+} T;
+#define ls (k&lt;&lt;1)
+#define rs (k&lt;&lt;1|1)
+#define mid ((l+r)&gt;&gt;1)
+inline void update ( int k,int l,int r,int p,int v )
+{
+	if ( l==r ) { t[k]+=v;return; }
+	if ( p&lt;=mid ) update(ls,l,mid,p,v);
+	else update(rs,mid+1,r,p,v);
+	t[k]=t[ls]+t[rs];
+}
+inline int query ( int k,int l,int r,int x )
+{
+	if ( l==r ) return T.query(l,x);
+	if ( t[ls]&gt;=x ) return query(ls,l,mid,x);
+	return query(rs,mid+1,r,x-t[ls]);
+}
+#undef ls
+#undef rs
+#undef mid
+inline void split ( int x )
+{
+	while ( true )
+	{
+		while ( T.ch[x][0] ) x=T.ch[x][0];
+		T.splay(x);
+		if ( T.val[x]==x ) { update(1,1,n,x,T.siz[x]);return; }
+		int y=T.find(x);T.splay(y);
+		update(1,1,n,x,T.siz[T.ch[y][0]]);
+		T.fa[T.ch[y][0]]=0;T.ch[y][0]=0;
+		x=y;
+	}
+}
+inline void merge ( int m,int r )
+{
+	int R=query(1,1,n,r);T.splay(R);
+	int cr=T.ch[R][1];T.ch[R][1]=0;T.pushup(R);
+	int M=query(1,1,n,m);T.splay(M);
+	int cm=T.ch[M][1];T.ch[M][1]=0;T.pushup(M);
+	update(1,1,n,T.val[M],-T.siz[cm]);T.fa[cm]=0;
+	if ( cm ) split(cm);
+	R=query(1,1,n,r);T.splay(R);T.ch[R][1]=cr;T.fa[cr]=R;T.pushup(R);
+}
+inline void build ( int l,int r )
+{
+	for ( int i=r;i&gt;l;i-- ) T.fa[a[i]]=a[i-1],T.ch[a[i-1]][1]=a[i];
+	for ( int i=r;i&gt;=l;i-- ) T.pushup(a[i]);
+	update(1,1,n,a[l],r-l+1);
+}
+signed main()
+{
+	n=read();int m=read();
+	for ( int i=1;i&lt;=n;i++ ) scanf(&quot;%d&quot;,&amp;a[i]);
+	for ( int i=1,j=1;i&lt;=n;build(i,j),j++,i=j ) while ( j&lt;n and a[j+1]&lt;a[i] ) j++;
+	while ( m-- )
+	{
+		if ( read()&amp;1 ) { int l=read(),m=read(),r=read();merge(m,r); }
+		else printf(&quot;%d\n&quot;,query(1,1,n,read()));
+	}
 	return 0;
 }
 </code></pre>
