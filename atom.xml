@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://rensheyu.github.io</id>
     <title>_RSY_&apos;s blog</title>
-    <updated>2020-02-27T13:56:54.797Z</updated>
+    <updated>2020-02-28T11:14:44.908Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://rensheyu.github.io"/>
     <link rel="self" href="https://rensheyu.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://rensheyu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, _RSY_&apos;s blog</rights>
     <entry>
-        <title type="html"><![CDATA[2020 省选模拟测试 Round #16 solution (20/02/27)]]></title>
+        <title type="html"><![CDATA[2020 省选模拟测试 Round #16 solution (20/02/27)（C题坑待填）]]></title>
         <id>https://rensheyu.github.io/contest-226/</id>
         <link href="https://rensheyu.github.io/contest-226/">
         </link>
