@@ -1,0 +1,386 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>2020 省选模拟测试 Round #17 solution (20/02/29) | _RSY_&#39;s blog</title>
+<link rel="shortcut icon" href="https://rensheyu.github.io/favicon.ico?v=1582967158451">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://rensheyu.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="2020 省选模拟测试 Round #17 solution (20/02/29) | _RSY_&#39;s blog - Atom Feed" href="https://rensheyu.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="【比赛链接】
+A. 迷惑数字统计
+【题解】
+真的很迷惑.
+考虑和为 10n10^n10n 的要求，显然需要将所有数字两两配对，配对完需要保证有恰好一对和为 101010，剩下的对和为 000 或 999.
+考虑枚举和为 101010 的一对..." />
+    <meta name="keywords" content="测试" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://rensheyu.github.io">
+  <img class="avatar" src="https://rensheyu.github.io/images/avatar.png?v=1582967158451" alt="">
+  </a>
+  <h1 class="site-title">
+    _RSY_&#39;s blog
+  </h1>
+  <p class="site-description">
+    滚落沙尘，泛生浮光。掠影千年，奔走四方。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              2020 省选模拟测试 Round #17 solution (20/02/29)
+            </h2>
+            <div class="post-info">
+              <span>
+                20200229
+              </span>
+              <span>
+                10 min read
+              </span>
+              
+                <a href="https://rensheyu.github.io/contest/" class="post-tag">
+                  # 测试
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p><a href="http://59.61.75.5:8018/contest/228">【比赛链接】</a></p>
+<h2 id="a-迷惑数字统计">A. 迷惑数字统计</h2>
+<p>【题解】</p>
+<p><s>真的很迷惑.</s></p>
+<p>考虑和为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">10^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span> 的要求，显然需要将所有数字两两配对，配对完需要保证有恰好一对和为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span></span></span></span>，剩下的对和为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>9</mn></mrow><annotation encoding="application/x-tex">9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">9</span></span></span></span>.</p>
+<p>考虑枚举和为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span></span></span></span> 的一对，剩下的用背包转移. 显然 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>8</mn></mrow><annotation encoding="application/x-tex">8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>7</mn></mrow><annotation encoding="application/x-tex">7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span></span></span></span> 都是唯一对应的，直接转移. 而对于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>9</mn></mrow><annotation encoding="application/x-tex">9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">9</span></span></span></span>，只需要保证 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 比 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>9</mn></mrow><annotation encoding="application/x-tex">9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">9</span></span></span></span> 多的个数为偶数即可，单独转移.</p>
+<p>效率 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>m</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(m^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>. 其中 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 为 <code>?</code> 个数.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+const int mod=1000000007;
+int n,m,cnt[20],tot[20],siz[20],f[20][2000],fct[200000],inv[200000],ans;
+char s[200000];
+inline int power ( int x,int y )
+{
+	int z=1;
+	for ( ;y;y&gt;&gt;=1,x=1LL*x*x%mod ) if ( y&amp;1 ) z=1LL*z*x%mod;
+	return z;
+}
+inline int C ( int n,int m ) { return 1LL*fct[n]*inv[m]%mod*inv[n-m]%mod; }
+inline void solve ( int x,int y )
+{
+	for ( int i=0;i&lt;=9;i++ ) siz[i]=0,cnt[i]=tot[i];
+	if ( !cnt[x] ) siz[x]++;
+	else cnt[x]--;
+	if ( !cnt[y] ) siz[y]++;
+	else cnt[y]--;
+	memset(f,0,sizeof(f));
+	for ( int i=0;i&lt;=m;i++ ) for ( int j=0;i+j&lt;=m;j++ )
+	{
+		int A=i+cnt[0],B=j+cnt[9];
+		if ( i&lt;siz[0] or j&lt;siz[9] ) continue;
+		if ( siz[9] ) B--;
+		if ( B&gt;A or ((A-B)&amp;1) ) continue;
+		f[1][i+j]=(f[1][i+j]+1LL*C(m,i)*C(m-i,j))%mod;
+	}
+	for ( int i=1;i&lt;=4;i++ )
+	{
+		int j=9-i,A=siz[i],B=siz[j];
+		if ( cnt[i]&lt;cnt[j] ) A+=cnt[j]-cnt[i];
+		else B+=cnt[i]-cnt[j];
+		for ( int p=0;A+B+2*p&lt;=m;p++ ) for ( int k=0;k+A+B+2*p&lt;=m;k++ ) if ( f[i][k] )
+			f[i+1][k+A+B+2*p]=(f[i+1][k+A+B+2*p]+1LL*C(m-k,A+p)*C(m-k-A-p,B+p)%mod*f[i][k])%mod;
+	}
+	ans=(ans+f[5][m])%mod;
+}
+signed main()
+{
+	scanf(&quot; %s&quot;,s+1);n=strlen(s+1);fct[0]=inv[0]=inv[1]=1;
+	for ( int i=1;i&lt;=n;i++ ) fct[i]=1LL*fct[i-1]*i%mod;
+	for ( int i=2;i&lt;=n;i++ ) inv[i]=1LL*(mod-mod/i)*inv[mod%i]%mod;
+	for ( int i=3;i&lt;=n;i++ ) inv[i]=1LL*inv[i-1]*inv[i]%mod;
+	for ( int i=1;i&lt;=n;i++ )
+		if ( s[i]=='?' ) m++;
+		else tot[s[i]^48]++;
+	for ( int i=1;i&lt;=5;i++ ) solve(i,10-i);
+	return !printf(&quot;%d\n&quot;,ans);
+}
+</code></pre>
+<h2 id="b-校运会">B. 校运会</h2>
+<p>【题解】</p>
+<p>根据题意，所求即为一个二分图最大权匹配. 直接建图跑最大费用可行流即可.</p>
+<p>比较可以直接用数组实现.</p>
+<p>注意：由于不要求得奖人数最多，应跑最大费用而不要求满流.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+const int inf=1&lt;&lt;29;
+int n,m,k;
+struct Cost
+{
+	int cnt[12];
+	Cost(int x=0,int y=0)
+	{
+		memset(cnt,0,sizeof(cnt));
+		if ( x ) cnt[x]+=y;
+	}
+	inline friend Cost operator + ( const Cost &amp;u,const Cost &amp;v )
+	{
+		Cost sum;
+		for ( int i=1;i&lt;=k;i++ ) sum.cnt[i]=u.cnt[i]+v.cnt[i];
+		return sum; 
+	}
+	inline friend Cost operator * ( const Cost &amp;u,const int &amp;v )
+	{
+		Cost sum;
+		for ( int i=1;i&lt;=k;i++ ) sum.cnt[i]=u.cnt[i]*v;
+		return sum; 
+	}
+};
+inline int cmp ( const Cost &amp;u,const Cost &amp;v )
+{
+	for ( int i=1;i&lt;=k;i++ )
+		if ( u.cnt[i]&gt;v.cnt[i] ) return 1;
+		else if ( u.cnt[i]&lt;v.cnt[i] ) return -1;
+	return 0;
+}
+struct Flow
+{
+	int n,S,T,cnt,h[200000],fr[200000];
+	Cost dis[200000];bool vis[200000];
+	struct edge { int v,nxt,f;Cost c; } e[200000];
+	inline void addedge ( int u,int v,int w )
+	{
+		e[++cnt].nxt=h[u];e[h[u]=cnt].v=v;e[cnt].f=1;e[cnt].c=Cost(w,1);
+		e[++cnt].nxt=h[v];e[h[v]=cnt].v=u;e[cnt].f=0;e[cnt].c=Cost(w,-1);
+	}
+	inline void init ( int n ) { S=++n;T=++n;this-&gt;n=n;cnt=1; }
+	inline bool spfa ( void )
+	{
+		for ( int i=1;i&lt;=n;i++ ) vis[i]=false,dis[i]=Cost(1,-inf),fr[i]=0;
+		std::queue&lt;int&gt; q;q.push(S);dis[S]=Cost();vis[S]=true;
+		while ( !q.empty() )
+		{
+			int u=q.front();q.pop();vis[u]=false;
+			for ( int i=h[u];i;i=e[i].nxt ) if ( e[i].f and cmp(dis[u]+e[i].c,dis[e[i].v])&gt;0 )
+			{
+				dis[e[i].v]=dis[u]+e[i].c;fr[e[i].v]=i;
+				if ( !vis[e[i].v] ) vis[e[i].v]=true,q.push(e[i].v);
+			}
+		}
+		return cmp(dis[T],Cost())&gt;0;
+	}
+	inline Cost maxcost_maxflow ( void )
+	{
+		Cost ans;
+		while ( spfa() )
+		{
+			int res=inf;
+			for ( int i=T;i!=S;i=e[fr[i]^1].v ) res=std::min(res,e[fr[i]].f);
+			ans=ans+dis[T]*res;
+			for ( int i=T;i!=S;i=e[fr[i]^1].v ) e[fr[i]].f-=res,e[fr[i]^1].f+=res;
+		}
+		return ans;
+	}
+} G;
+inline int read ( void )
+{
+	int x=0;char ch;
+	while ( !isdigit(ch=getchar()) ) ;
+	for ( x=ch^48;isdigit(ch=getchar()); ) x=(x&lt;&lt;1)+(x&lt;&lt;3)+(ch^48);
+	return x;
+}
+signed main()
+{
+	n=read();m=read();k=read();G.init(n+m);
+	for ( int i=1;i&lt;=n;i++ ) for ( int t=read(),x,y;t--; ) x=read(),y=read(),G.addedge(i,x+n,y);
+	for ( int i=1;i&lt;=n;i++ ) G.addedge(G.S,i,0);
+	for ( int i=1;i&lt;=m;i++ ) G.addedge(i+n,G.T,0);
+	Cost Ans=G.maxcost_maxflow();
+	for ( int i=1;i&lt;=k;i++ ) printf(&quot;%d%c&quot;,Ans.cnt[i],&quot; \n&quot;[i==k]);
+	return 0;
+}
+</code></pre>
+<h2 id="c-寻找字符串">C. 寻找字符串</h2>
+<p>【题解】</p>
+<p>考虑对询问建 AC 自动机.</p>
+<p>显然所要求的即为折线形的字符串. 考虑将折线两端延长至边界处，则询问串为新得到的串的子串. 同时这样得到的串只有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi><mo>×</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">R \times C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span> 个. 因此枚举每个串在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mi>i</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">fail</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span> 树上跑一遍，对于每个询问串查询 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mi>i</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">fail</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span> 树所在节点子树内的访问次数和即可. 注意细节与去重. 效率 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>3</mn></msup><mo>+</mo><mo>∑</mo><mo>∣</mo><mi>s</mi><mo>∣</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^3+\sum  \lvert s \rvert)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.00001em;vertical-align:-0.25001em;"></span><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="mopen">∣</span><span class="mord mathdefault">s</span><span class="mclose">∣</span><span class="mclose">)</span></span></span></span>.</p>
+<p>【代码】</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+const int maxn=200000+10;
+int R,C,Q,size,dfsn,ch[maxn][27],fail[maxn],pos[maxn],dfsx[maxn],siz[maxn],len[maxn];
+long long sum[5][maxn];
+char s[600][600],S[maxn];
+std::vector&lt;int&gt; e[maxn];
+inline void dfs ( int u )
+{
+	dfsx[u]=++dfsn;siz[u]=1;
+	for ( int v:e[u] ) dfs(v),siz[u]+=siz[v];
+}
+inline long long calc ( int u,int t ) { return sum[t][dfsx[u]+siz[u]-1]-sum[t][dfsx[u]-1]; }
+signed main()
+{
+	scanf(&quot;%d%d%d&quot;,&amp;R,&amp;C,&amp;Q);
+	for ( int i=1;i&lt;=R;i++ ) scanf(&quot; %s&quot;,s[i]+1);
+	for ( int i=1;i&lt;=Q;i++ )
+	{
+		scanf(&quot; %s&quot;,S+1);int u=0;
+		for ( int j=1;S[j];j++ )
+		{
+			if ( !ch[u][S[j]^64] ) ch[u][S[j]^64]=++size;
+			u=ch[u][S[j]^64];len[i]++;
+		}
+		pos[i]=u;
+	}
+	std::queue&lt;int&gt; q;
+	for ( int i=1;i&lt;=26;i++ ) if ( ch[0][i] ) q.push(ch[0][i]);
+	while ( !q.empty() )
+	{
+		int u=q.front();q.pop();
+		for ( int i=1;i&lt;=26;i++ )
+			if ( ch[u][i] ) fail[ch[u][i]]=ch[fail[u]][i],q.push(ch[u][i]);
+			else ch[u][i]=ch[fail[u]][i];
+	}
+	for ( int i=1;i&lt;=size;i++ ) e[fail[i]].push_back(i);
+	dfs(0);
+	for ( int i=1;i&lt;=R;i++ ) for ( int j=1;j&lt;=C;j++ )
+	{
+		int u=0,x=i,y=1;
+		while ( y&lt;j ) u=ch[u][s[x][y]^64],y++,sum[1][dfsx[u]]++;
+		while ( x&lt;=R ) u=ch[u][s[x][y]^64],x++,sum[1][dfsx[u]]++;
+	}
+	for ( int j=1;j&lt;=C;j++ )
+	{
+		int u=0;
+		for ( int i=1;i&lt;=R;i++ ) u=ch[u][s[i][j]^64],sum[2][dfsx[u]]+=i,sum[3][dfsx[u]]++;
+	}
+	for ( int i=1;i&lt;=R;i++ )
+	{
+		int u=0;
+		for ( int j=1;j&lt;=C;j++ ) u=ch[u][s[i][j]^64],sum[4][dfsx[u]]+=C-j;
+	}
+	for ( int t=1;t&lt;=4;t++ ) for ( int i=1;i&lt;=dfsn;i++ ) sum[t][i]+=sum[t][i-1];
+	for ( int i=1;i&lt;=Q;i++ ) printf(&quot;%lld\n&quot;,calc(pos[i],1)-calc(pos[i],2)+calc(pos[i],3)*len[i]-calc(pos[i],4));
+	return 0;
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#a-%E8%BF%B7%E6%83%91%E6%95%B0%E5%AD%97%E7%BB%9F%E8%AE%A1">A. 迷惑数字统计</a></li>
+<li><a href="#b-%E6%A0%A1%E8%BF%90%E4%BC%9A">B. 校运会</a></li>
+<li><a href="#c-%E5%AF%BB%E6%89%BE%E5%AD%97%E7%AC%A6%E4%B8%B2">C. 寻找字符串</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://rensheyu.github.io/contest-226/">
+              <h3 class="post-title">
+                2020 省选模拟测试 Round #16 solution (20/02/27)
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by 
+<a href="https://github.com/getgridea/gridea" target="_blank"> &nbsp;Gridea</a>
+  <a class="rss" href="https://rensheyu.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
