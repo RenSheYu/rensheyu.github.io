@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://localhost:4000</id>
+    <id>https://rensheyu.github.io</id>
     <title>_RSY_&apos;s blog</title>
-    <updated>2020-03-31T12:05:18.372Z</updated>
+    <updated>2020-03-31T12:07:01.828Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://localhost:4000"/>
-    <link rel="self" href="http://localhost:4000/atom.xml"/>
+    <link rel="alternate" href="https://rensheyu.github.io"/>
+    <link rel="self" href="https://rensheyu.github.io/atom.xml"/>
     <subtitle>滚落沙尘，泛生浮光。掠影千年，奔走四方。</subtitle>
-    <logo>http://localhost:4000/images/avatar.png</logo>
-    <icon>http://localhost:4000/favicon.ico</icon>
+    <logo>https://rensheyu.github.io/images/avatar.png</logo>
+    <icon>https://rensheyu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, _RSY_&apos;s blog</rights>
     <entry>
         <title type="html"><![CDATA[中考数学基本模型]]></title>
-        <id>http://localhost:4000/Mathematics/</id>
-        <link href="http://localhost:4000/Mathematics/">
+        <id>https://rensheyu.github.io/Mathematics/</id>
+        <link href="https://rensheyu.github.io/Mathematics/">
         </link>
         <updated>2020-03-26T14:19:40.000Z</updated>
         <content type="html"><![CDATA[<ol>
@@ -120,7 +120,7 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 <p>③ 对角线为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>G</mi><mo separator="true">,</mo><mi>C</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">AG,CF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault">G</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span>. 则 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>C</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">/</mi><mi>F</mi><mi>G</mi></mrow><annotation encoding="application/x-tex">AC//FG</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord">/</span><span class="mord">/</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mord mathdefault">G</span></span></span></span> 且 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>C</mi><mo>=</mo><mi>F</mi><mi>G</mi></mrow><annotation encoding="application/x-tex">AC=FG</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mord mathdefault">G</span></span></span></span>.</p>
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∴</mo><mrow><mo fence="true">{</mo><mtable><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><msub><mi>x</mi><mi>G</mi></msub><mo>−</mo><msub><mi>x</mi><mi>F</mi></msub><mo>=</mo><mn>2</mn><mo>−</mo><mo>(</mo><mo>−</mo><mn>1</mn><mo>)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><msub><mi>y</mi><mi>G</mi></msub><mo>−</mo><mn>0</mn><mo>=</mo><mo>(</mo><mo>−</mo><mn>3</mn><mo>)</mo><mo>−</mo><mn>0</mn></mrow></mstyle></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">\therefore \begin{cases} x_G-x_F=2-(-1) \\ y_G-0=(-3)-0  \end{cases}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69224em;vertical-align:0em;"></span><span class="mrel amsrm">∴</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.0000299999999998em;vertical-align:-1.25003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">G</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">1</span><span class="mclose">)</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">G</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">3</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>.</p>
 <p>解得 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>G</mi><mn>4</mn></msub><mo>(</mo><mn>0</mn><mo separator="true">,</mo><mo>−</mo><mn>3</mn><mo>)</mo><mo separator="true">,</mo><msub><mi>F</mi><mn>4</mn></msub><mo>(</mo><mo>−</mo><mn>3</mn><mo separator="true">,</mo><mn>0</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">G_4(0,-3),F_4(-3,0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">−</span><span class="mord">3</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi><mo>(</mo><mn>2</mn><mo separator="true">,</mo><mo>−</mo><mn>3</mn><mo>)</mo><mo separator="true">,</mo><mi>F</mi><mo>(</mo><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mn>0</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">G(2,-3),F(-1,0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">G</span><span class="mopen">(</span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">−</span><span class="mord">3</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord">−</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span></span>（与 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo separator="true">,</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">A,C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">A</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span> 重合，舍去）.</p>
-<p>综上，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>F</mi><mn>1</mn></msub><mo>(</mo><mn>1</mn><mo separator="true">,</mo><mn>0</mn><mo>)</mo><mo separator="true">,</mo><mo separator="true">,</mo><msub><mi>F</mi><mn>2</mn></msub><mo>(</mo><mn>4</mn><mo>−</mo><msqrt><mn>7</mn></msqrt><mo separator="true">,</mo><mn>0</mn><mo>)</mo><mo separator="true">,</mo><msub><mi>F</mi><mn>3</mn></msub><mo>(</mo><mn>4</mn><mo>+</mo><msqrt><mn>7</mn></msqrt><mo separator="true">,</mo><mn>0</mn><mo>)</mo><mo separator="true">,</mo><msub><mi>F</mi><mn>4</mn></msub><mo>(</mo><mo>−</mo><mn>3</mn><mo separator="true">,</mo><mn>0</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">F_1(1,0),,F_2(4-\sqrt 7,0),F_3(4+\sqrt 7,0),F_4(-3,0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.1572200000000001em;vertical-align:-0.25em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.90722em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;">7</span></span><span style="top:-2.86722em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+<p>综上，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>F</mi><mn>1</mn></msub><mo>(</mo><mn>1</mn><mo separator="true">,</mo><mn>0</mn><mo>)</mo><mo separator="true">,</mo><msub><mi>F</mi><mn>2</mn></msub><mo>(</mo><mn>4</mn><mo>−</mo><msqrt><mn>7</mn></msqrt><mo separator="true">,</mo><mn>0</mn><mo>)</mo><mo separator="true">,</mo><msub><mi>F</mi><mn>3</mn></msub><mo>(</mo><mn>4</mn><mo>+</mo><msqrt><mn>7</mn></msqrt><mo separator="true">,</mo><mn>0</mn><mo>)</mo><mo separator="true">,</mo><msub><mi>F</mi><mn>4</mn></msub><mo>(</mo><mo>−</mo><mn>3</mn><mo separator="true">,</mo><mn>0</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">F_1(1,0),F_2(4-\sqrt 7,0),F_3(4+\sqrt 7,0),F_4(-3,0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.1572200000000001em;vertical-align:-0.25em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.90722em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;">7</span></span><span style="top:-2.86722em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
 -10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
 -50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
 35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
@@ -156,8 +156,8 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
     </entry>
     <entry>
         <title type="html"><![CDATA[2020 省选模拟测试 Round #17 solution (20/02/29)]]></title>
-        <id>http://localhost:4000/contest-228/</id>
-        <link href="http://localhost:4000/contest-228/">
+        <id>https://rensheyu.github.io/contest-228/</id>
+        <link href="https://rensheyu.github.io/contest-228/">
         </link>
         <updated>2020-02-29T08:49:24.000Z</updated>
         <content type="html"><![CDATA[<p><a href="http://59.61.75.5:8018/contest/228">【比赛链接】</a></p>
@@ -379,8 +379,8 @@ signed main()
     </entry>
     <entry>
         <title type="html"><![CDATA[2020 省选模拟测试 Round #16 solution (20/02/27)]]></title>
-        <id>http://localhost:4000/contest-226/</id>
-        <link href="http://localhost:4000/contest-226/">
+        <id>https://rensheyu.github.io/contest-226/</id>
+        <link href="https://rensheyu.github.io/contest-226/">
         </link>
         <updated>2020-02-27T09:05:45.000Z</updated>
         <content type="html"><![CDATA[<p><a href="http://59.61.75.5:8018/contest/226">【比赛链接】</a></p>
@@ -751,8 +751,8 @@ signed main()
     </entry>
     <entry>
         <title type="html"><![CDATA[CF17E. Palisection]]></title>
-        <id>http://localhost:4000/CF17E/</id>
-        <link href="http://localhost:4000/CF17E/">
+        <id>https://rensheyu.github.io/CF17E/</id>
+        <link href="https://rensheyu.github.io/CF17E/">
         </link>
         <updated>2020-02-27T03:18:48.000Z</updated>
         <content type="html"><![CDATA[<p>【题解】</p>
@@ -806,8 +806,8 @@ signed main()
     </entry>
     <entry>
         <title type="html"><![CDATA[2020 寒假专题训练：数论 目录]]></title>
-        <id>http://localhost:4000/subject-number-theory/</id>
-        <link href="http://localhost:4000/subject-number-theory/">
+        <id>https://rensheyu.github.io/subject-number-theory/</id>
+        <link href="https://rensheyu.github.io/subject-number-theory/">
         </link>
         <updated>2020-02-26T18:56:47.000Z</updated>
         <content type="html"><![CDATA[<h1 id="一-part-1day1~day2">一、Part 1(Day1~Day2)</h1>
@@ -842,8 +842,8 @@ Fibonacci 循环节</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[2020 寒假专题训练：计算几何 目录]]></title>
-        <id>http://localhost:4000/subject-geometry/</id>
-        <link href="http://localhost:4000/subject-geometry/">
+        <id>https://rensheyu.github.io/subject-geometry/</id>
+        <link href="https://rensheyu.github.io/subject-geometry/">
         </link>
         <updated>2020-02-26T18:51:55.000Z</updated>
         <content type="html"><![CDATA[<h1 id="一-part-1day1~day2">一、Part 1(Day1~Day2)</h1>
@@ -867,8 +867,8 @@ Fibonacci 循环节</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[CF1264E. Beautiful League]]></title>
-        <id>http://localhost:4000/CF1264E/</id>
-        <link href="http://localhost:4000/CF1264E/">
+        <id>https://rensheyu.github.io/CF1264E/</id>
+        <link href="https://rensheyu.github.io/CF1264E/">
         </link>
         <updated>2020-02-26T18:06:20.000Z</updated>
         <content type="html"><![CDATA[<p><a href="https://codeforces.com/contest/1264/problem/E">【题目链接】</a></p>
@@ -965,8 +965,8 @@ signed main()
     </entry>
     <entry>
         <title type="html"><![CDATA[CF1291D. Irreducible Anagrams]]></title>
-        <id>http://localhost:4000/CF1291D/</id>
-        <link href="http://localhost:4000/CF1291D/">
+        <id>https://rensheyu.github.io/CF1291D/</id>
+        <link href="https://rensheyu.github.io/CF1291D/">
         </link>
         <updated>2020-02-26T18:04:33.000Z</updated>
         <content type="html"><![CDATA[<p><a href="https://codeforces.com/contest/1291/problem/D">【题目链接】</a></p>
@@ -1013,8 +1013,8 @@ signed main()
     </entry>
     <entry>
         <title type="html"><![CDATA[CF1142C. U2]]></title>
-        <id>http://localhost:4000/CF1142C/</id>
-        <link href="http://localhost:4000/CF1142C/">
+        <id>https://rensheyu.github.io/CF1142C/</id>
+        <link href="https://rensheyu.github.io/CF1142C/">
         </link>
         <updated>2020-02-26T17:50:53.000Z</updated>
         <content type="html"><![CDATA[<p><a href="https://codeforces.com/problemset/problem/1142/C">【题目链接】</a></p>
@@ -1060,8 +1060,8 @@ signed main()
     </entry>
     <entry>
         <title type="html"><![CDATA[CF13D. Triangles]]></title>
-        <id>http://localhost:4000/CF13D/</id>
-        <link href="http://localhost:4000/CF13D/">
+        <id>https://rensheyu.github.io/CF13D/</id>
+        <link href="https://rensheyu.github.io/CF13D/">
         </link>
         <updated>2020-02-26T17:45:16.000Z</updated>
         <content type="html"><![CDATA[<p><a href="https://codeforces.com/problemset/problem/13/D">【题目链接】</a></p>
